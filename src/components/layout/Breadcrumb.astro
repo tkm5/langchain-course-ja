@@ -1,6 +1,6 @@
 ---
 import { SECTION_TITLES } from '@/utils/constants'
-import { getSectionPath } from '@/utils/sections'
+import { getSectionPath, withBase } from '@/utils/sections'
 
 interface Props {
   sectionNumber?: number
@@ -10,7 +10,7 @@ interface Props {
 
 const { sectionNumber, lectureNumber, lectureTitle } = Astro.props
 
-const items: { label: string; href?: string }[] = [{ label: 'ホーム', href: '/' }]
+const items: { label: string; href?: string }[] = [{ label: 'ホーム', href: withBase('/') }]
 
 if (sectionNumber) {
   const sectionTitle = SECTION_TITLES[sectionNumber] || `セクション${sectionNumber}`

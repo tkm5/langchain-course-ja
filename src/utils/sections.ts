@@ -10,6 +10,16 @@ export interface SectionGroup {
   overview?: SectionEntry
 }
 
+/** ベースパスを取得する（末尾スラッシュなし） */
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
+
+/**
+ * パスにベースパスを付与する
+ */
+export function withBase(path: string): string {
+  return `${BASE}${path}`
+}
+
 /**
  * セクション番号を2桁のゼロパディング文字列に変換する
  */
@@ -78,7 +88,7 @@ export async function getSectionEntries(
  * セクションのURLパスを生成する
  */
 export function getSectionPath(sectionNumber: number): string {
-  return `/sections/${padSection(sectionNumber)}`
+  return withBase(`/sections/${padSection(sectionNumber)}`)
 }
 
 /**
@@ -88,5 +98,5 @@ export function getLecturePath(
   sectionNumber: number,
   lectureNumber: number
 ): string {
-  return `/sections/${padSection(sectionNumber)}/lecture-${padLecture(lectureNumber)}`
+  return withBase(`/sections/${padSection(sectionNumber)}/lecture-${padLecture(lectureNumber)}`)
 }

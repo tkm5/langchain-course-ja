@@ -1,12 +1,13 @@
 ---
 import ThemeToggle from '@/components/ui/ThemeToggle.astro'
+import { withBase } from '@/utils/sections'
 ---
 
 <header
   class="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm"
 >
   <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
-    <a href="/" class="flex items-center gap-2 text-foreground no-underline">
+    <a href={withBase('/')} class="flex items-center gap-2 text-foreground no-underline">
       <svg
         class="h-6 w-6 text-accent"
         viewBox="0 0 24 24"
@@ -22,7 +23,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle.astro'
     </a>
     <nav class="flex items-center gap-4">
       <a
-        href="/sections/01"
+        href={withBase('/sections/01')}
         class="hidden text-sm text-muted hover:text-foreground md:inline"
         >セクション一覧</a
       >
