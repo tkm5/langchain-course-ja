@@ -65,8 +65,9 @@ const {
   <ScrollToTop />
   <script>
     async function initMermaid() {
-      const codeBlocks = document.querySelectorAll('pre > code.language-mermaid')
-      if (codeBlocks.length === 0) return
+      // Shikiが出力する data-language="mermaid" 属性でマッチ
+      const preBlocks = document.querySelectorAll('pre[data-language="mermaid"]')
+      if (preBlocks.length === 0) return
 
       const { default: mermaid } = await import('mermaid')
       const isDark = document.documentElement.classList.contains('dark')
@@ -79,13 +80,12 @@ const {
       })
 
       const containers: HTMLElement[] = []
-      codeBlocks.forEach((el, i) => {
+      preBlocks.forEach((pre, i) => {
         const container = document.createElement('div')
         container.className = 'mermaid'
         container.id = `mermaid-graph-${Date.now()}-${i}`
-        container.textContent = el.textContent || ''
-        const pre = el.closest('pre')
-        if (pre && pre.parentNode) {
+        container.textContent = pre.textContent || ''
+        if (pre.parentNode) {
           pre.parentNode.replaceChild(container, pre)
           containers.push(container)
         }
