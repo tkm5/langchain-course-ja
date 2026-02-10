@@ -1,0 +1,125 @@
+---
+title: "S12-L2: プロジェクトセットアップ"
+description: "Reflectionエージェントプロジェクトの環境構築と依存関係のインストール"
+sectionNumber: 12
+sectionTitle: "Reflection Agent"
+lectureNumber: 2
+lectureTitle: "Project Setup"
+udemyLectureId: 51118767
+difficulty: "beginner"
+tags: ["setup", "poetry", "environment", "reflection-agent"]
+category: "langgraph"
+order: 1202
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，Reflectionエージェントプロジェクトの環境をセットアップします．Poetry環境の構築，依存パッケージのインストール，環境変数の設定を行います．
+
+## セットアップ手順
+
+```mermaid
+graph LR
+    A["poetry init"] --> B["依存パッケージ<br>インストール"]
+    B --> C[".envファイル作成"]
+    C --> D["main.py作成"]
+    D --> E["動作確認"]
+```
+
+### 1. プロジェクト初期化
+
+```bash
+mkdir reflection-agent && cd reflection-agent
+poetry init
+```
+
+### 2. 依存パッケージのインストール
+
+```bash
+poetry add python-dotenv black isort langchain langchain-openai langgraph
+```
+
+### 3. 環境変数の設定（.envファイル）
+
+```
+OPENAI_API_KEY=your_key
+LANGCHAIN_API_KEY=your_key
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_PROJECT=reflection-agent
+```
+
+### 4. ボイラープレートコード
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+
+if __name__ == "__main__":
+    print("Hello LangGraph")
+```
+
+## まとめ
+
+- Poetryで仮想環境を構築し，LangChainとLangGraphをインストール
+- GPT-3.5 TurboとLangSmithのAPIキーを設定
+- main.pyでボイラープレートコードを作成し動作確認
+
+<Quiz questions={[
+  {
+    question: "このプロジェクトで使用するパッケージマネージャーはどれですか?",
+    options: [
+      "pip",
+      "conda",
+      "Poetry",
+      "pipenv"
+    ],
+    answer: 2,
+    explanation: "このプロジェクトではPoetryを使って仮想環境の構築と依存パッケージの管理を行います．"
+  },
+  {
+    question: "LANGCHAIN_TRACING_V2環境変数の役割は何ですか?",
+    options: [
+      "LLMの応答速度を2倍にする",
+      "LangSmithでのトレーシングを有効にする",
+      "LangChainのバージョン2を使用する",
+      "デバッグモードを有効にする"
+    ],
+    answer: 1,
+    explanation: "LANGCHAIN_TRACING_V2=trueを設定することで，LangSmithでの実行トレーシングが有効になります．"
+  },
+  {
+    question: "このプロジェクトで使用するLLMモデルはどれですか?",
+    options: [
+      "GPT-4",
+      "Claude 3",
+      "GPT-3.5 Turbo",
+      "Gemini Pro"
+    ],
+    answer: 2,
+    explanation: "このプロジェクトではChatOpenAIのデフォルトモデルであるGPT-3.5 Turboを使用します．"
+  },
+  {
+    question: "load_dotenv関数の目的は何ですか?",
+    options: [
+      "Pythonの環境変数を暗号化する",
+      ".envファイルから環境変数を読み込む",
+      "APIキーを自動生成する",
+      "仮想環境を初期化する"
+    ],
+    answer: 1,
+    explanation: "load_dotenv関数は.envファイルに記載された環境変数をPythonの実行環境に読み込む役割を果たします．"
+  },
+  {
+    question: "プロジェクトのセットアップで必要なAPIキーはどれですか?",
+    options: [
+      "OpenAI APIキーのみ",
+      "LangChain APIキーのみ",
+      "OpenAI APIキーとLangChain APIキー",
+      "Google APIキーとOpenAI APIキー"
+    ],
+    answer: 2,
+    explanation: "LLMの呼び出しにOpenAI APIキーが，LangSmithでのトレーシングにLangChain APIキーがそれぞれ必要です．"
+  }
+]} />

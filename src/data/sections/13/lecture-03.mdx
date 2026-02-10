@@ -1,0 +1,87 @@
+---
+title: "S13-L3: セクションリソース"
+description: "Reflexionエージェントセクションの参考資料とリソースリンク"
+sectionNumber: 13
+sectionTitle: "Reflexion Agent"
+lectureNumber: 3
+lectureTitle: "Section Resources"
+difficulty: "beginner"
+tags: ["resources", "references", "reflexion"]
+category: "langgraph"
+order: 1303
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，Reflexionエージェントセクションの参考資料を紹介します．
+
+## 参考資料
+
+- Reflexion論文（Northeastern大，MIT，Princeton大の共同研究）
+- LangChainチームによるReflexionエージェントの実装ブログ
+- LangGraphの公式ドキュメント
+
+## まとめ
+
+- Reflexion論文がこのセクションの理論的基盤
+- LangChainチームの実装を参考に，よりわかりやすくリファクタリングした内容を本セクションで学習
+
+<Quiz questions={[
+  {
+    question: "Reflexionエージェントの理論的基盤となっているのは何ですか?",
+    options: [
+      "OpenAIの公式ドキュメント",
+      "Reflexion論文（Northeastern大，MIT，Princeton大）",
+      "LangChainの公式チュートリアル",
+      "Google DeepMindの研究論文"
+    ],
+    answer: 1,
+    explanation: "Reflexionエージェントは，Northeastern大，MIT，Princeton大の共同研究によるReflexion論文が理論的基盤となっています．"
+  },
+  {
+    question: "本セクションの実装はどこの実装を参考にしていますか?",
+    options: [
+      "OpenAIのサンプルコード",
+      "LangChainチームによる実装",
+      "Hugging Faceのチュートリアル",
+      "Google Colabのノートブック"
+    ],
+    answer: 1,
+    explanation: "本セクションはLangChainチームによるReflexionエージェントの実装を参考に，よりわかりやすくリファクタリングした内容です．"
+  },
+  {
+    question: "参考資料として挙げられていないものはどれですか?",
+    options: [
+      "Reflexion論文",
+      "LangChainチームの実装ブログ",
+      "LangGraphの公式ドキュメント",
+      "OpenAI Cookbook"
+    ],
+    answer: 3,
+    explanation: "参考資料としてReflexion論文，LangChainチームの実装ブログ，LangGraphの公式ドキュメントが挙げられており，OpenAI Cookbookは含まれていません．"
+  },
+  {
+    question: "このレクチャーの主な目的は何ですか?",
+    options: [
+      "コードの実装を行う",
+      "参考資料とリソースリンクを紹介する",
+      "環境セットアップを完了する",
+      "グラフの実行結果を確認する"
+    ],
+    answer: 1,
+    explanation: "このレクチャーでは，Reflexionエージェントセクションで参照する参考資料とリソースリンクの紹介を行います．"
+  },
+  {
+    question: "Reflexionアーキテクチャの特徴として正しいものはどれですか?",
+    options: [
+      "LLMを使わずにルールベースで動作する",
+      "批評を生成し，それを実際に活用してLLMの出力を改善する",
+      "単一の検索クエリのみを実行する",
+      "トレーシング機能を持たない"
+    ],
+    answer: 1,
+    explanation: "Reflexionは単に批評を生成するだけでなく，その批評を実際に活用してLLMの出力を改善する高度な手法です．"
+  }
+]} />

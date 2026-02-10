@@ -1,0 +1,143 @@
+---
+title: "S14-L9: Tavily APIを使ったWeb検索ノードの実装"
+description: "LangGraphにおけるTavily APIを使用したWeb検索ノードの構築"
+sectionNumber: 14
+sectionTitle: "Agentic RAG"
+lectureNumber: 9
+lectureTitle: "Implementing a Web Search Node in LangGraph using Tavily API"
+udemyLectureId: 51133263
+difficulty: "intermediate"
+tags: ["tavily", "web-search", "langgraph", "node"]
+category: "rag"
+order: 1409
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，Tavily APIを使用してWeb検索を実行するノードを実装します．このノードは，ドキュメントグレーダーによって関連性のないドキュメントが検出された場合に実行され，外部情報でコンテキストを補完します．
+
+## Web検索ノードの実装
+
+### インポートと初期設定
+
+```python
+from typing import Any, Dict
+from langchain.schema import Document
+from langchain_community.tools.tavily_search import TavilySearchResults
+from graph.state import GraphState
+
+web_search_tool = TavilySearchResults(max_results=3)
+```
+
+### ノード関数の実装
+
+```python
+def web_search(state: GraphState) -> Dict[str, Any]:
+    """Web検索を実行するノード
+
+    Args:
+        state: 現在のグラフ状態
+
+    Returns:
+        更新されたドキュメントと質問を含む辞書
+    """
+    print("---WEB SEARCH---")
+    question = state["question"]
+    documents = state["documents"]
+
+    # Tavilyで検索を実行
+    tavily_results = web_search_tool.invoke({"query": question})
+
+    # 検索結果を結合して1つのドキュメントにする
+    joined_content = "\n".join(
+        [d["content"] for d in tavily_results]
+    )
+    web_results = Document(page_content=joined_content)
+
+    # 既存のドキュメントに追加
+    if documents is not None:
+        documents.append(web_results)
+    else:
+        documents = [web_results]
+
+    return {"documents": documents, "question": question}
+```
+
+### 処理の流れ
+
+1. GraphStateから質問と既存のドキュメントを取得する
+2. Tavily検索ツールを使用して最大3件の検索結果を取得する
+3. 検索結果の`content`フィールドを結合して1つの文字列にする
+4. LangChainの`Document`オブジェクトに変換する
+5. 既存のドキュメントリストに追加する（既存ドキュメントは関連性フィルタリング済み）
+
+## Tavilyの特徴
+
+Tavilyは，LLMベースのアプリケーション向けに最適化された検索エンジンです．検索結果をダウンストリーム処理に適した形式で返してくれるため，エージェントアプリケーションとの統合が容易です．
+
+## まとめ
+
+- Tavily検索ツールを使用して，最大3件のWeb検索結果を取得する
+- 検索結果を結合してLangChainのDocumentオブジェクトに変換する
+- ドキュメントグレーダーでフィルタリングされた後に実行されるため，既存のドキュメントは関連性が保証されている
+- `web_search`ノードは外部情報でコンテキストを補完する役割を果たす
+
+<Quiz questions={[
+  {
+    question: "TavilySearchResultsのmax_resultsは何件に設定されていますか?",
+    options: [
+      "1件",
+      "3件",
+      "5件",
+      "10件"
+    ],
+    answer: 1,
+    explanation: "Web検索ノードではTavilySearchResultsのmax_resultsが3に設定されており，最大3件の検索結果を返します．"
+  },
+  {
+    question: "検索結果をDocumentオブジェクトに変換する前に行う処理は何ですか?",
+    options: [
+      "各結果をベクトル化する",
+      "各結果のcontentフィールドを結合して1つの文字列にする",
+      "各結果をデータベースに保存する",
+      "各結果の文字数をカウントする"
+    ],
+    answer: 1,
+    explanation: "検索結果の各要素のcontentフィールドを改行で結合して1つの文字列にし，それをDocumentオブジェクトのpage_contentとして設定します．"
+  },
+  {
+    question: "Web検索ノードが実行されるタイミングはいつですか?",
+    options: [
+      "グラフの最初に常に実行される",
+      "ドキュメントグレーダーで関連性のないドキュメントが検出された場合",
+      "LLMの生成後に常に実行される",
+      "ユーザーが明示的に要求した場合のみ"
+    ],
+    answer: 1,
+    explanation: "Web検索ノードは，Grade Documentsノードで関連性のないドキュメントが検出され，web_searchフラグがTrueになった場合に実行されます．"
+  },
+  {
+    question: "検索結果のDocumentオブジェクトはどのように処理されますか?",
+    options: [
+      "既存のドキュメントを全て置換する",
+      "既存のフィルタリング済みドキュメントに追加する",
+      "別のリストに保存する",
+      "即座にLLMに送信する"
+    ],
+    answer: 1,
+    explanation: "Web検索結果は既存のドキュメントリスト（関連性フィルタリング済み）に追加されます．"
+  },
+  {
+    question: "Tavilyが他の検索エンジンと異なる特徴は何ですか?",
+    options: [
+      "無料で使用できる",
+      "LLMベースのアプリケーション向けに最適化されている",
+      "画像検索機能を持つ",
+      "リアルタイムニュースのみを検索する"
+    ],
+    answer: 1,
+    explanation: "TavilyはLLMベースのアプリケーション向けに最適化された検索エンジンで，エージェントアプリケーションとの統合が容易な形式で結果を返します．"
+  }
+]} />

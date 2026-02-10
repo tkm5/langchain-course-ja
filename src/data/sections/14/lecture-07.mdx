@@ -1,0 +1,116 @@
+---
+title: "S14-L7: LangGraphのRetrieveノード実装"
+description: "ベクトルストアからの関連ドキュメント取得を行うRetrieveノードの作成"
+sectionNumber: 14
+sectionTitle: "Agentic RAG"
+lectureNumber: 7
+lectureTitle: "Fetching Context for LLMs: The LangGraph Retrieve Node"
+udemyLectureId: 51132403
+difficulty: "intermediate"
+tags: ["langgraph", "retrieval", "vector-store", "node"]
+category: "rag"
+order: 1407
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，ベクトルストアからユーザーの質問に関連するドキュメントを取得するRetrieveノードを実装します．これはグラフの最初に実行されるノードで，セマンティック検索を使用してコンテキストを収集します．
+
+## Retrieveノードの実装
+
+### ノードの構造
+
+LangGraphのノードは関数として定義します．入力としてGraphStateを受け取り，更新するフィールドを含む辞書を返します．
+
+```python
+from typing import Any, Dict
+from graph.state import GraphState
+from ingestion import retriever
+
+
+def retrieve(state: GraphState) -> Dict[str, Any]:
+    """ベクトルストアから関連ドキュメントを取得するノード
+
+    Args:
+        state: 現在のグラフ状態
+
+    Returns:
+        更新されたドキュメントと質問を含む辞書
+    """
+    print("---RETRIEVE---")
+    question = state["question"]
+    documents = retriever.invoke(question)
+    return {"documents": documents, "question": question}
+```
+
+### 処理の流れ
+
+1. GraphStateから`question`を抽出する
+2. リトリーバーの`invoke`メソッドでセマンティック検索を実行する
+3. 取得したドキュメントでGraphStateの`documents`フィールドを更新する
+
+## まとめ
+
+- Retrieveノードはグラフの最初に実行され，ベクトルストアからドキュメントを取得する
+- リトリーバーの`invoke`メソッドでセマンティック検索を実行する
+- ノードは辞書を返し，GraphStateの該当フィールドを更新する
+
+<Quiz questions={[
+  {
+    question: "Retrieveノードがグラフ内で最初に実行される理由は何ですか?",
+    options: [
+      "他のノードより処理が軽いため",
+      "ユーザーの質問に関連するドキュメントをコンテキストとして収集する必要があるため",
+      "環境変数を読み込む必要があるため",
+      "LLMの初期化を行うため"
+    ],
+    answer: 1,
+    explanation: "Retrieveノードはユーザーの質問に関連するドキュメントをベクトルストアから取得し，後続のノードが使用するコンテキストを収集するため，最初に実行されます．"
+  },
+  {
+    question: "retriever.invoke()メソッドが実行する検索の種類はどれですか?",
+    options: [
+      "キーワード検索",
+      "セマンティック検索",
+      "全文検索",
+      "正規表現検索"
+    ],
+    answer: 1,
+    explanation: "リトリーバーのinvoke()メソッドは，ベクトルストアに対してセマンティック検索（意味的類似性に基づく検索）を実行します．"
+  },
+  {
+    question: "Retrieveノードが返す辞書のキーに含まれないものはどれですか?",
+    options: [
+      "documents",
+      "question",
+      "generation",
+      "documentsとquestionの両方が含まれる"
+    ],
+    answer: 2,
+    explanation: "Retrieveノードはdocuments（取得ドキュメント）とquestion（元の質問）のみを返します．generationはまだこの時点では生成されていません．"
+  },
+  {
+    question: "LangGraphのノード関数の標準的なシグネチャはどれですか?",
+    options: [
+      "入力なし，辞書を返す",
+      "GraphStateを入力し，辞書を返す",
+      "文字列を入力し，文字列を返す",
+      "リストを入力し，リストを返す"
+    ],
+    answer: 1,
+    explanation: "LangGraphのノードはGraphStateを入力として受け取り，更新するフィールドを含む辞書を返す関数として定義します．"
+  },
+  {
+    question: "ノード内でprint文を使用する目的は何ですか?",
+    options: [
+      "LLMに出力を送信する",
+      "実行フローのデバッグとモニタリング",
+      "ログファイルに自動保存する",
+      "LangSmithにトレースを送信する"
+    ],
+    answer: 1,
+    explanation: "ノード内のprint文（例: '---RETRIEVE---'）は，グラフ実行時にどのノードが実行されているかを追跡するためのデバッグ用です．"
+  }
+]} />

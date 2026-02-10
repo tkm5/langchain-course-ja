@@ -1,0 +1,187 @@
+---
+title: "S5-L3: ReActエージェント用ツールの定義"
+description: "LangChainのtoolデコレータを使ってPython関数をエージェントツールに変換する方法"
+sectionNumber: 5
+sectionTitle: "Diving Deep Into ReAct Agents"
+lectureNumber: 3
+lectureTitle: "Defining Tools for our ReAct agent"
+udemyLectureId: 40695854
+difficulty: "intermediate"
+tags: ["tools", "decorator", "langchain", "react"]
+category: "agents"
+order: 503
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，Python関数をLangChainのツールに変換する方法を学び，ReActプロンプトの構造を詳しく分析します．ツールの選択がどのようにLLMの推論エンジンで行われるかを理解します．
+
+## toolデコレータでツールを定義する
+
+LangChainの`@tool`デコレータを使うと，通常のPython関数をLangChainツールに変換できます．
+
+```python
+from langchain.tools import tool
+
+@tool
+def get_text_length(text: str) -> int:
+    """Returns the length of a text by characters."""
+    # 不要な非アルファベット文字を除去
+    text = text.strip("'\n")
+    return len(text)
+```
+
+デコレータは関数名，引数，戻り値，説明文を自動的にStructuredToolクラスに格納します．
+
+## ツールリストの作成
+
+```python
+tools = [get_text_length]
+```
+
+このツールリストをReActエージェントに渡すことで，LLMがこれらのツールを利用できるようになります．
+
+## ReActプロンプトの分析
+
+ReActプロンプトは，LLMアプリケーション開発における最も重要なプロンプトです．LangChain Hubで公開されているHarrison Chase作成のプロンプトを基にしています．
+
+```
+Answer the following questions as best you can. You have access to the following tools:
+{tools}
+
+Use the following format:
+
+Question: the input question you must answer
+Thought: you should always think about what to do
+Action: the action to take, should be one of [{tool_names}]
+Action Input: the input to the action
+Observation: the result of the action
+... (this Thought/Action/Action Input/Observation can repeat N times)
+Thought: I now know the final answer
+Final Answer: the final answer to the original input question
+
+Begin!
+
+Question: {input}
+Thought: {agent_scratchpad}
+```
+
+```text
+┌───────────────────────────────────────┐
+│         ReActプロンプトの構造           │
+├───────────────────────────────────────┤
+│ 1. ツール情報の注入                     │
+│    "You have access to: {tools}"       │
+├───────────────────────────────────────┤
+│ 2. 出力フォーマットの指示               │
+│    Question → Thought → Action         │
+│    → Action Input → Observation        │
+│    （N回繰り返し可能）                   │
+│    → Final Answer                      │
+├───────────────────────────────────────┤
+│ 3. 入力変数                            │
+│    {input}           ユーザーの質問     │
+│    {agent_scratchpad} 作業履歴         │
+└───────────────────────────────────────┘
+```
+
+このプロンプトの特徴:
+
+- Chain of Thoughtプロンプト（LLMに思考過程を説明させる）
+- Few-shotプロンプト（出力フォーマットの例を提示）
+- ReAct論文（Reasoning and Acting）の実装
+
+## プロンプトテンプレートの設定
+
+```python
+from langchain.prompts import PromptTemplate
+from langchain.tools.render import render_text_description
+
+prompt = PromptTemplate.from_template(template).partial(
+    tools=render_text_description(tools),
+    tool_names=", ".join([t.name for t in tools]),
+)
+```
+
+`render_text_description`は，ツールオブジェクトのリストを文字列に変換するユーティリティ関数です．
+
+## LLMの初期化とstopトークン
+
+```python
+from langchain.chat_models import ChatOpenAI
+
+llm = ChatOpenAI(
+    temperature=0,
+    stop=["\nObservation"]
+)
+```
+
+`stop`トークンは極めて重要です．LLMが`\nObservation`を出力した時点でテキスト生成を停止させます．これにより，LLMがツール実行結果を勝手に推測（ハルシネーション）することを防ぎます．
+
+## まとめ
+
+- `@tool`デコレータで関数をLangChainツールに変換できる
+- ReActプロンプトはChain of Thought + Few-shot + ReAct論文の組み合わせ
+- `render_text_description`でツール情報を文字列化してプロンプトに埋め込む
+- `stop`トークンはLLMのハルシネーション防止に不可欠
+
+<Quiz questions={[
+  {
+    question: "LangChainの@toolデコレータが自動的に格納する情報に含まれないものはどれですか？",
+    options: [
+      "関数名",
+      "引数の型情報",
+      "説明文（docstring）",
+      "関数の実行時間"
+    ],
+    answer: 3,
+    explanation: "@toolデコレータは関数名，引数，戻り値，説明文を自動的にStructuredToolクラスに格納しますが，実行時間は格納しません．"
+  },
+  {
+    question: "ReActプロンプトが組み合わせている3つの手法は何ですか？",
+    options: [
+      "RAG + ファインチューニング + プロンプトエンジニアリング",
+      "Chain of Thought + Few-shot + ReAct論文の実装",
+      "ゼロショット + 転移学習 + 強化学習",
+      "バッチ処理 + ストリーミング + キャッシュ"
+    ],
+    answer: 1,
+    explanation: "ReActプロンプトはChain of Thought（思考過程の説明），Few-shot（出力フォーマットの例示），ReAct論文（Reasoning and Acting）の3つの手法を組み合わせています．"
+  },
+  {
+    question: "stopトークンとして '\\nObservation' を設定する理由は何ですか？",
+    options: [
+      "LLMの応答速度を上げるため",
+      "トークン消費量を削減するため",
+      "LLMがツール実行結果を勝手に推測（ハルシネーション）することを防ぐため",
+      "プロンプトのフォーマットを整えるため"
+    ],
+    answer: 2,
+    explanation: "stopトークンを設定することで，LLMがObservation以降のテキストを勝手に生成することを防ぎ，実際のツール実行結果のみを使用できるようにします．"
+  },
+  {
+    question: "render_text_description関数の役割は何ですか？",
+    options: [
+      "ツールを実行する",
+      "ツールオブジェクトのリストを文字列に変換する",
+      "LLMの応答をパースする",
+      "プロンプトテンプレートを作成する"
+    ],
+    answer: 1,
+    explanation: "render_text_descriptionはツールオブジェクトのリストを，プロンプトに埋め込むための文字列に変換するユーティリティ関数です．"
+  },
+  {
+    question: "LLMの初期化時にtemperature=0を設定する理由は何ですか？",
+    options: [
+      "応答の多様性を最大化するため",
+      "決定的で一貫した出力を得るため",
+      "モデルの計算コストを下げるため",
+      "長い応答を生成するため"
+    ],
+    answer: 1,
+    explanation: "temperature=0にすることで，LLMは最も確率の高いトークンを常に選択し，決定的で一貫した出力を返します．エージェントの推論では再現性が重要です．"
+  }
+]} />
+

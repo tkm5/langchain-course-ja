@@ -1,0 +1,1716 @@
+[
+  {
+    "type": "lecture",
+    "section": 1,
+    "lecture": 1,
+    "id": 37474628,
+    "title": "Course Introduction",
+    "asset_type": "Video",
+    "section_title": "Introduction",
+    "category": "introduction"
+  },
+  {
+    "type": "lecture",
+    "section": 1,
+    "lecture": 2,
+    "id": 46164881,
+    "title": "Course Objectives",
+    "asset_type": "Video",
+    "section_title": "Introduction",
+    "category": "introduction"
+  },
+  {
+    "type": "lecture",
+    "section": 1,
+    "lecture": 3,
+    "id": 37500252,
+    "title": "Course Structure + How to get the best of Udemy [PLEASE DO NOT SKIP]",
+    "asset_type": "Video",
+    "section_title": "Introduction",
+    "category": "introduction"
+  },
+  {
+    "type": "lecture",
+    "section": 1,
+    "lecture": 4,
+    "id": 37587208,
+    "title": "Course's Community",
+    "asset_type": "Video",
+    "section_title": "Introduction",
+    "category": "introduction"
+  },
+  {
+    "type": "lecture",
+    "section": 1,
+    "lecture": 5,
+    "id": 46160669,
+    "title": "Course Resources",
+    "asset_type": "Article",
+    "section_title": "Introduction",
+    "category": "introduction"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 1,
+    "id": 37494286,
+    "title": "What is LangChain? LangChain Under 6 Minutes",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 2,
+    "id": 52021759,
+    "title": "What are we building? LangChain Hello World Chain",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 3,
+    "id": 52009171,
+    "title": "Project Setup",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 4,
+    "id": 52011213,
+    "title": "LangChain Fundamentals: Prompt Templates, ChatModels, and Chains",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 5,
+    "id": 52015765,
+    "title": "Building a LangChain Chain to Summarize Text",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 6,
+    "id": 52016039,
+    "title": "Debugging and Tracing Our LangChain Chain",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 7,
+    "id": 52016041,
+    "title": "Using Local Open-Weights Models with LangChain and Ollama",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 8,
+    "id": 52016043,
+    "title": "Integrating LangSmith for LangChain Application Tracing",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "quiz",
+    "section": 2,
+    "quiz": 1,
+    "id": 7188689,
+    "title": "LangChain LCEL Fundamentals Quiz",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "quiz",
+    "section": 2,
+    "quiz": 2,
+    "id": 7018865,
+    "title": "LangChain Model Switching: Groq API Integration",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 9,
+    "id": 43182340,
+    "title": "LangChain Version In Course V.1",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 2,
+    "lecture": 10,
+    "id": 48881489,
+    "title": "Which LLM to Use? (OpenAI, Gemini, Anthropic, Mistral, Llama)",
+    "asset_type": "Video",
+    "section_title": "The GIST of LangChain",
+    "category": "langchain-basics"
+  },
+  {
+    "type": "lecture",
+    "section": 3,
+    "lecture": 1,
+    "id": 52107223,
+    "title": "What are AI Agents? A High-Level Overview",
+    "asset_type": "Video",
+    "section_title": "THE GIST Of AI Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 3,
+    "lecture": 2,
+    "id": 52107225,
+    "title": "Creating an AI Job Search Agent: A Practical Demo",
+    "asset_type": "Video",
+    "section_title": "THE GIST Of AI Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 3,
+    "lecture": 3,
+    "id": 53365481,
+    "title": "The Evolution of LangChain ReAct Agents",
+    "asset_type": "Video",
+    "section_title": "THE GIST Of AI Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 3,
+    "lecture": 4,
+    "id": 53365483,
+    "title": "Setting Up the Environment for a LangChain Search Agent",
+    "asset_type": "Video",
+    "section_title": "THE GIST Of AI Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 3,
+    "lecture": 5,
+    "id": 53365485,
+    "title": "Creating Your First LangChain Agent: Tools and LLMs",
+    "asset_type": "Video",
+    "section_title": "THE GIST Of AI Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 3,
+    "lecture": 6,
+    "id": 53365487,
+    "title": "From Query to Answer: How a LangChain Agent Thinks",
+    "asset_type": "Video",
+    "section_title": "THE GIST Of AI Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 3,
+    "lecture": 7,
+    "id": 53365489,
+    "title": "Integrating Real-World Search with Tavily and LangChain Tools",
+    "asset_type": "Video",
+    "section_title": "THE GIST Of AI Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 3,
+    "lecture": 8,
+    "id": 53383947,
+    "title": "Structured Output with LangChain Agents Using Pydantic",
+    "asset_type": "Video",
+    "section_title": "THE GIST Of AI Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 3,
+    "lecture": 9,
+    "id": 54004171,
+    "title": "[THEORY] Predictable Agent Responses with LangChain Structured Output",
+    "asset_type": "Video",
+    "section_title": "THE GIST Of AI Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 1,
+    "id": 53365573,
+    "title": "[DO NOT SKIP] Origins and Foundations of LangChain ReAct Agents",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 2,
+    "id": 52107227,
+    "title": "Environment and Dependency Setup for a LangChain Agent",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 3,
+    "id": 52107233,
+    "title": "Building a Search Agent: Defining Tools with LangChain",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 4,
+    "id": 52110075,
+    "title": "Building a Search Agent: From Prompt to Execution",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 5,
+    "id": 52111119,
+    "title": "Building a Search Agent: Debug, Review Execution Flow",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 6,
+    "id": 52124509,
+    "title": "Enhancing LangChain Agents with Pydantic Output Parsers",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 7,
+    "id": 52125323,
+    "title": "Composing an Agent with Output Parsers using LCEL",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 8,
+    "id": 52704153,
+    "title": "Reliable Structured Output with LangChain's .with_structured_output()",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "quiz",
+    "section": 4,
+    "quiz": 1,
+    "id": 7188659,
+    "title": "Output Parsing Quiz",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 9,
+    "id": 52888779,
+    "title": "create_agent Implementation",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 4,
+    "lecture": 10,
+    "id": 53257329,
+    "title": "Trace",
+    "asset_type": "Video",
+    "section_title": "The Original LangChain ReAct Agent",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 5,
+    "lecture": 1,
+    "id": 40695844,
+    "title": "What are we building? ReAct AgentExecutor from scratch",
+    "asset_type": "Video",
+    "section_title": "Diving Deep Into ReAct Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 5,
+    "lecture": 2,
+    "id": 40695848,
+    "title": "Environment Setup + ReAct Algorithm overview",
+    "asset_type": "Video",
+    "section_title": "Diving Deep Into ReAct Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 5,
+    "lecture": 3,
+    "id": 40695854,
+    "title": "Defining Tools for our ReAct agent",
+    "asset_type": "Video",
+    "section_title": "Diving Deep Into ReAct Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 5,
+    "lecture": 4,
+    "id": 50927443,
+    "title": "Debugging LangChain: Resolving LLM stop Token & Template Indentation Issues",
+    "asset_type": "Video",
+    "section_title": "Diving Deep Into ReAct Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 5,
+    "lecture": 5,
+    "id": 40695864,
+    "title": "ReAct prompt, LLM Reasoning Engine, Output Parsing and Tool Execution",
+    "asset_type": "Video",
+    "section_title": "Diving Deep Into ReAct Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 5,
+    "lecture": 6,
+    "id": 54396091,
+    "title": "Parsing Errors",
+    "asset_type": "Video",
+    "section_title": "Diving Deep Into ReAct Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 5,
+    "lecture": 7,
+    "id": 40698646,
+    "title": "AgentAction, AgentFinish, ReAct AgentStep",
+    "asset_type": "Video",
+    "section_title": "Diving Deep Into ReAct Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 5,
+    "lecture": 8,
+    "id": 40700072,
+    "title": "CallbackHandlers, ReAct Prompt and finalizing the ReAct Agent loop",
+    "asset_type": "Video",
+    "section_title": "Diving Deep Into ReAct Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 5,
+    "lecture": 9,
+    "id": 43377894,
+    "title": "Recap with LangSmith",
+    "asset_type": "Video",
+    "section_title": "Diving Deep Into ReAct Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 6,
+    "lecture": 1,
+    "id": 52589395,
+    "title": "Intro",
+    "asset_type": "Video",
+    "section_title": "Function Calling",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 6,
+    "lecture": 2,
+    "id": 52587633,
+    "title": "[Theory] Understanding Function Calling for LLMs",
+    "asset_type": "Video",
+    "section_title": "Function Calling",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 6,
+    "lecture": 3,
+    "id": 43430790,
+    "title": "[Theory] Function Calling Vs ReAct",
+    "asset_type": "Video",
+    "section_title": "Function Calling",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 6,
+    "lecture": 4,
+    "id": 43732664,
+    "title": "Function/ Tool Calling in LangChain",
+    "asset_type": "Video",
+    "section_title": "Function Calling",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 6,
+    "lecture": 5,
+    "id": 52637317,
+    "title": "Upgrading ReAct Agents with Tool Calling",
+    "asset_type": "Video",
+    "section_title": "Function Calling",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 6,
+    "lecture": 6,
+    "id": 52651453,
+    "title": "Debugging a LangChain Agent's Tool Call Execution",
+    "asset_type": "Video",
+    "section_title": "Function Calling",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 6,
+    "lecture": 7,
+    "id": 52651667,
+    "title": "Tracing a LangChain Agent's Tool Call Execution with LangSmith",
+    "asset_type": "Video",
+    "section_title": "Function Calling",
+    "category": "agents"
+  },
+  {
+    "type": "quiz",
+    "section": 6,
+    "quiz": 1,
+    "id": 7025393,
+    "title": "From ReAct Prompting to Modern Tool Calling",
+    "section_title": "Function Calling",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 7,
+    "lecture": 1,
+    "id": 53461849,
+    "title": "Introduction to Retrieval Augmentation Generation (RAG)",
+    "asset_type": "Video",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 7,
+    "lecture": 2,
+    "id": 52242139,
+    "title": "Introduction to RAG Implementation",
+    "asset_type": "Video",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 7,
+    "lecture": 3,
+    "id": 53949869,
+    "title": "Medium Analyzer- Boilerplate Project Setup",
+    "asset_type": "Video",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 7,
+    "lecture": 4,
+    "id": 43396790,
+    "title": "Medium Analyzer- Class Review: TextLoader,TextSplitter,OpenAIEmbeddings,Pinecone",
+    "asset_type": "Video",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 7,
+    "lecture": 5,
+    "id": 43397438,
+    "title": "Medium Analyzer- Ingestion Implementation",
+    "asset_type": "Video",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 7,
+    "lecture": 6,
+    "id": 53910509,
+    "title": "RECAP",
+    "asset_type": "Video",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 7,
+    "lecture": 7,
+    "id": 53903915,
+    "title": "Medium Analyzer- Naive Retrieval Implementation Implementation",
+    "asset_type": "Video",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 7,
+    "lecture": 8,
+    "id": 53903093,
+    "title": "Medium Analyzer- 2 Step RAG",
+    "asset_type": "Video",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 7,
+    "lecture": 9,
+    "id": 53910903,
+    "title": "LangChain RAG Documentation",
+    "asset_type": "Video",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "quiz",
+    "section": 7,
+    "quiz": 1,
+    "id": 7188721,
+    "title": "RAG Implementation with Vector Stores Quiz",
+    "section_title": "The GIST of RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 1,
+    "id": 37622346,
+    "title": "What are we building? (RAG)",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 2,
+    "id": 44651779,
+    "title": "Environment Setup",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 3,
+    "id": 51314281,
+    "title": "Ingestion Pipeline Intro",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 4,
+    "id": 51344527,
+    "title": "Imports",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 5,
+    "id": 51504071,
+    "title": "Tavily Crawling",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 6,
+    "id": 51313845,
+    "title": "[Optional] TavilyMap, TavilyExtract for High customizability",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 7,
+    "id": 51359991,
+    "title": "[Optional] Crawling Deep Dive",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 8,
+    "id": 51363057,
+    "title": "Recap",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 9,
+    "id": 51360029,
+    "title": "Chunking (Text Splitting)",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 10,
+    "id": 51360037,
+    "title": "Batch Indexing",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 11,
+    "id": 54055321,
+    "title": "Retrieval Agent Implementation",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 12,
+    "id": 54055323,
+    "title": "Run, Debug, Trace RAG Agent",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 13,
+    "id": 37610242,
+    "title": "\"Frontend\" with Streamlit (UI)",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 14,
+    "id": 47301559,
+    "title": "Documentation Helper In Production",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 8,
+    "lecture": 15,
+    "id": 54176973,
+    "title": "RAG Architecture",
+    "asset_type": "Video",
+    "section_title": "Building a Documentation Assistant",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 9,
+    "lecture": 1,
+    "id": 37735894,
+    "title": "The GIST of LLMs",
+    "asset_type": "Video",
+    "section_title": "Prompt Engineering Theory",
+    "category": "prompt-engineering"
+  },
+  {
+    "type": "lecture",
+    "section": 9,
+    "lecture": 2,
+    "id": 37507516,
+    "title": "What is a Prompt? Composition of a formal prompt",
+    "asset_type": "Video",
+    "section_title": "Prompt Engineering Theory",
+    "category": "prompt-engineering"
+  },
+  {
+    "type": "lecture",
+    "section": 9,
+    "lecture": 3,
+    "id": 37507510,
+    "title": "Zero Shot Prompting",
+    "asset_type": "Video",
+    "section_title": "Prompt Engineering Theory",
+    "category": "prompt-engineering"
+  },
+  {
+    "type": "lecture",
+    "section": 9,
+    "lecture": 4,
+    "id": 37507526,
+    "title": "Few Shot Prompting",
+    "asset_type": "Video",
+    "section_title": "Prompt Engineering Theory",
+    "category": "prompt-engineering"
+  },
+  {
+    "type": "lecture",
+    "section": 9,
+    "lecture": 5,
+    "id": 37493912,
+    "title": "Chain of Thought Prompting",
+    "asset_type": "Video",
+    "section_title": "Prompt Engineering Theory",
+    "category": "prompt-engineering"
+  },
+  {
+    "type": "lecture",
+    "section": 9,
+    "lecture": 6,
+    "id": 37493790,
+    "title": "ReAct Prompting",
+    "asset_type": "Video",
+    "section_title": "Prompt Engineering Theory",
+    "category": "prompt-engineering"
+  },
+  {
+    "type": "lecture",
+    "section": 9,
+    "lecture": 7,
+    "id": 37554570,
+    "title": "Prompt Engineering Quick Tips",
+    "asset_type": "Video",
+    "section_title": "Prompt Engineering Theory",
+    "category": "prompt-engineering"
+  },
+  {
+    "type": "lecture",
+    "section": 9,
+    "lecture": 8,
+    "id": 51759795,
+    "title": "Context Engineering",
+    "asset_type": "Video",
+    "section_title": "Prompt Engineering Theory",
+    "category": "prompt-engineering"
+  },
+  {
+    "type": "lecture",
+    "section": 9,
+    "lecture": 9,
+    "id": 52803023,
+    "title": "Context Engineering a System Prompt",
+    "asset_type": "Video",
+    "section_title": "Prompt Engineering Theory",
+    "category": "prompt-engineering"
+  },
+  {
+    "type": "lecture",
+    "section": 10,
+    "lecture": 1,
+    "id": 40592700,
+    "title": "LLM Applications in Production",
+    "asset_type": "Video",
+    "section_title": "LLM Applications In Production",
+    "category": "production"
+  },
+  {
+    "type": "lecture",
+    "section": 10,
+    "lecture": 2,
+    "id": 39894132,
+    "title": "LLM Application Development landscape",
+    "asset_type": "Video",
+    "section_title": "LLM Applications In Production",
+    "category": "production"
+  },
+  {
+    "type": "lecture",
+    "section": 10,
+    "lecture": 3,
+    "id": 46383693,
+    "title": "LLMs in Production: Privacy & Data Retention",
+    "asset_type": "Video",
+    "section_title": "LLM Applications In Production",
+    "category": "production"
+  },
+  {
+    "type": "lecture",
+    "section": 10,
+    "lecture": 4,
+    "id": 46421767,
+    "title": "Generative UI/UX featuring CopilotKit",
+    "asset_type": "Video",
+    "section_title": "LLM Applications In Production",
+    "category": "production"
+  },
+  {
+    "type": "lecture",
+    "section": 10,
+    "lecture": 5,
+    "id": 47459213,
+    "title": "Official LangChain Academy Courses",
+    "asset_type": "Video",
+    "section_title": "LLM Applications In Production",
+    "category": "production"
+  },
+  {
+    "type": "lecture",
+    "section": 10,
+    "lecture": 6,
+    "id": 48369147,
+    "title": "Open Source LLMs VS Managed LLM Providers (Deepseek)",
+    "asset_type": "Video",
+    "section_title": "LLM Applications In Production",
+    "category": "production"
+  },
+  {
+    "type": "lecture",
+    "section": 10,
+    "lecture": 7,
+    "id": 50890333,
+    "title": "Confidence in AI Results By Assaf Elovic & Harrison Chase",
+    "asset_type": "Video",
+    "section_title": "LLM Applications In Production",
+    "category": "production"
+  },
+  {
+    "type": "lecture",
+    "section": 10,
+    "lecture": 8,
+    "id": 54198055,
+    "title": "[NEW] AI FOMO is the New Normal",
+    "asset_type": "Video",
+    "section_title": "LLM Applications In Production",
+    "category": "production"
+  },
+  {
+    "type": "lecture",
+    "section": 10,
+    "lecture": 9,
+    "id": 39902390,
+    "title": "Finished course? Whats next!",
+    "asset_type": "Video",
+    "section_title": "LLM Applications In Production",
+    "category": "production"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 1,
+    "id": 43592832,
+    "title": "What is LangGraph?",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 2,
+    "id": 50029199,
+    "title": "Why LangGraph? LangGraph VS LangChain",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 3,
+    "id": 50029225,
+    "title": "What are Graphs?",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 4,
+    "id": 43592714,
+    "title": "LangGraph & Flow Engineering",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 5,
+    "id": 50029219,
+    "title": "LangGraph Core Components",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 6,
+    "id": 50029457,
+    "title": "--------- [Hands On] Implementing ReAct AgentExecutor with LangGraph ---------",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 7,
+    "id": 50029463,
+    "title": "[Hands On] Get Started: Setting Up Your ReAct Agent Project Environment",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 8,
+    "id": 50650905,
+    "title": "[Hands On] Coding the Agent's Brain: Implementing the ReAct Runnable",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 9,
+    "id": 50656113,
+    "title": "[Hands On] 43. Building Blocks: Defining Your Agent's Nodes in LangGraph",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 10,
+    "id": 50659311,
+    "title": "[Hands On] Bringing Your ReAct Agent to Life: Connecting Nodes into a Graph",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 11,
+    "id": 50679481,
+    "title": "[Hands On] Running Our LangGraph React Agent with Function Calling",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 11,
+    "lecture": 12,
+    "id": 53996453,
+    "title": "[IMPORTANT] Building Modern LLM Agents: From History to LangGraph v1.0",
+    "asset_type": "Video",
+    "section_title": "Introduction To LangGraph",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 12,
+    "lecture": 1,
+    "id": 51118757,
+    "title": "What are we building?",
+    "asset_type": "Video",
+    "section_title": "Reflection Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 12,
+    "lecture": 2,
+    "id": 51118767,
+    "title": "Project Setup",
+    "asset_type": "Video",
+    "section_title": "Reflection Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 12,
+    "lecture": 3,
+    "id": 51118769,
+    "title": "Creating the Reflector Chain and the Tweet Reviosr Chain",
+    "asset_type": "Video",
+    "section_title": "Reflection Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 12,
+    "lecture": 4,
+    "id": 52505041,
+    "title": "Defining our LangGraph Graph",
+    "asset_type": "Video",
+    "section_title": "Reflection Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 12,
+    "lecture": 5,
+    "id": 51118779,
+    "title": "LangSmith Tracing",
+    "asset_type": "Video",
+    "section_title": "Reflection Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 13,
+    "lecture": 1,
+    "id": 51122501,
+    "title": "What are we building",
+    "asset_type": "Video",
+    "section_title": "Reflexion Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 13,
+    "lecture": 2,
+    "id": 51122509,
+    "title": "Project Setup",
+    "asset_type": "Video",
+    "section_title": "Reflexion Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 13,
+    "lecture": 3,
+    "id": 51122651,
+    "title": "Section Resources",
+    "asset_type": "Article",
+    "section_title": "Reflexion Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 13,
+    "lecture": 4,
+    "id": 54702755,
+    "title": "Actor Agent V2",
+    "asset_type": "Video",
+    "section_title": "Reflexion Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 13,
+    "lecture": 5,
+    "id": 51122519,
+    "title": "Revisor Agent",
+    "asset_type": "Video",
+    "section_title": "Reflexion Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 13,
+    "lecture": 6,
+    "id": 51122525,
+    "title": "ToolNode - Executing Tools",
+    "asset_type": "Video",
+    "section_title": "Reflexion Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 13,
+    "lecture": 7,
+    "id": 54152099,
+    "title": "Building Our LangGraph Graph",
+    "asset_type": "Video",
+    "section_title": "Reflexion Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 13,
+    "lecture": 8,
+    "id": 54197723,
+    "title": "Tracing Our Graph",
+    "asset_type": "Video",
+    "section_title": "Reflexion Agent",
+    "category": "langgraph"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 1,
+    "id": 51132381,
+    "title": "What are Building In this Section- Agentic RAG Architecture",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 2,
+    "id": 51132487,
+    "title": "Improving RAG Quality with the Corrective RAG Flow",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 3,
+    "id": 51132387,
+    "title": "Boilerplate Setup for an Agentic RAG Agent with LangGraph",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 4,
+    "id": 51132391,
+    "title": "Code Structure",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 5,
+    "id": 51132395,
+    "title": "LangChain Vector Store Ingestion Pipeline (WebLoader, ChromaDB)",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 6,
+    "id": 51132401,
+    "title": "Managing Information Flow in LangGraph: The GraphState",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 7,
+    "id": 51132403,
+    "title": "Fetching Context for LLMs: The LangGraph Retrieve Node",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 8,
+    "id": 51133261,
+    "title": "Building a Relevance Filter for RAG using LangChain's Structured Output",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 9,
+    "id": 51133263,
+    "title": "Implementing a Web Search Node in LangGraph using Tavily API",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 10,
+    "id": 51133265,
+    "title": "Creating the LLM Generation Chain and Node for LangGraph",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 11,
+    "id": 51288589,
+    "title": "Building and Running the Complete LangGraph Agent",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 12,
+    "id": 51288657,
+    "title": "Self RAG- Intro",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 13,
+    "id": 51288659,
+    "title": "Self RAG- Implementation",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 14,
+    "lecture": 14,
+    "id": 51288853,
+    "title": "Adaptive RAG",
+    "asset_type": "Video",
+    "section_title": "Agentic RAG",
+    "category": "rag"
+  },
+  {
+    "type": "lecture",
+    "section": 15,
+    "lecture": 1,
+    "id": 49043719,
+    "title": "[Theory] Why MCP (Model Context Protocol)",
+    "asset_type": "Video",
+    "section_title": "Introduction to MCP",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 15,
+    "lecture": 2,
+    "id": 49563229,
+    "title": "[Theory] How LLMs REALLY Use Tools: Understanding Tool Calling",
+    "asset_type": "Video",
+    "section_title": "Introduction to MCP",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 15,
+    "lecture": 3,
+    "id": 52632217,
+    "title": "[Theory] The GIST of the Protocol with Tool Calling",
+    "asset_type": "Video",
+    "section_title": "Introduction to MCP",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 15,
+    "lecture": 4,
+    "id": 52638003,
+    "title": "[Theory] MCP Architecture",
+    "asset_type": "Video",
+    "section_title": "Introduction to MCP",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 15,
+    "lecture": 5,
+    "id": 52637949,
+    "title": "[Theory] MCP Servers",
+    "asset_type": "Video",
+    "section_title": "Introduction to MCP",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 15,
+    "lecture": 6,
+    "id": 49563259,
+    "title": "Bridging the Gap: The LangChain MCP Adapter Explained",
+    "asset_type": "Video",
+    "section_title": "Introduction to MCP",
+    "category": "mcp"
+  },
+  {
+    "type": "quiz",
+    "section": 15,
+    "quiz": 1,
+    "id": 7188741,
+    "title": "MCP Quiz",
+    "section_title": "Introduction to MCP",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 16,
+    "lecture": 1,
+    "id": 52635201,
+    "title": "What are we building?",
+    "asset_type": "Video",
+    "section_title": "Using Pre-built Server (mcpdoc)",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 16,
+    "lecture": 2,
+    "id": 49353235,
+    "title": "MCP Inspector",
+    "asset_type": "Video",
+    "section_title": "Using Pre-built Server (mcpdoc)",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 16,
+    "lecture": 3,
+    "id": 49319577,
+    "title": "LLM.txt",
+    "asset_type": "Video",
+    "section_title": "Using Pre-built Server (mcpdoc)",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 16,
+    "lecture": 4,
+    "id": 49375709,
+    "title": "mcpdoc",
+    "asset_type": "Video",
+    "section_title": "Using Pre-built Server (mcpdoc)",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 17,
+    "lecture": 1,
+    "id": 52636615,
+    "title": "Intro",
+    "asset_type": "Video",
+    "section_title": "Building MCP Servers and Clients",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 17,
+    "lecture": 2,
+    "id": 52632233,
+    "title": "Boilerplate",
+    "asset_type": "Video",
+    "section_title": "Building MCP Servers and Clients",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 17,
+    "lecture": 3,
+    "id": 52632155,
+    "title": "Servers",
+    "asset_type": "Video",
+    "section_title": "Building MCP Servers and Clients",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 17,
+    "lecture": 4,
+    "id": 49665623,
+    "title": "What are we MCBuilding?",
+    "asset_type": "Video",
+    "section_title": "Building MCP Servers and Clients",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 17,
+    "lecture": 5,
+    "id": 49665621,
+    "title": "Simple MCP Server",
+    "asset_type": "Video",
+    "section_title": "Building MCP Servers and Clients",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 17,
+    "lecture": 6,
+    "id": 49665627,
+    "title": "LangChain's MultiServerMCPClient from the LangChain MCP Adapter",
+    "asset_type": "Video",
+    "section_title": "Building MCP Servers and Clients",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 17,
+    "lecture": 7,
+    "id": 52632271,
+    "title": "Tracing",
+    "asset_type": "Video",
+    "section_title": "Building MCP Servers and Clients",
+    "category": "mcp"
+  },
+  {
+    "type": "lecture",
+    "section": 18,
+    "lecture": 1,
+    "id": 54083603,
+    "title": "[New, Important] Stop Writing Deprecated Code: LangChain's Official MCP Server",
+    "asset_type": "Video",
+    "section_title": "Useful Tools",
+    "category": "tools"
+  },
+  {
+    "type": "lecture",
+    "section": 18,
+    "lecture": 2,
+    "id": 40338354,
+    "title": "LangChain Hub - Downloads prompt from the community",
+    "asset_type": "Video",
+    "section_title": "Useful Tools",
+    "category": "tools"
+  },
+  {
+    "type": "lecture",
+    "section": 18,
+    "lecture": 3,
+    "id": 40338356,
+    "title": "TextSplitting Playground",
+    "asset_type": "Video",
+    "section_title": "Useful Tools",
+    "category": "tools"
+  },
+  {
+    "type": "lecture",
+    "section": 18,
+    "lecture": 4,
+    "id": 42379044,
+    "title": "LangChain VS LlamaIndex",
+    "asset_type": "Video",
+    "section_title": "Useful Tools",
+    "category": "tools"
+  },
+  {
+    "type": "lecture",
+    "section": 19,
+    "lecture": 1,
+    "id": 54097937,
+    "title": "Deep Agents: Taxonomy of Agents: Shallow Agents, Deep Agents, Coding Agents",
+    "asset_type": "Video",
+    "section_title": "Deep Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 19,
+    "lecture": 2,
+    "id": 54113267,
+    "title": "Deep Agents: How Deep Agents Use Dynamic To-Do Lists to Solve Complex Tasks",
+    "asset_type": "Video",
+    "section_title": "Deep Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 19,
+    "lecture": 3,
+    "id": 54113269,
+    "title": "Deep Agents: Sub Agents and Hierarchical Delegation",
+    "asset_type": "Video",
+    "section_title": "Deep Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 19,
+    "lecture": 4,
+    "id": 54113271,
+    "title": "Deep Agents: Subagents context flow",
+    "asset_type": "Video",
+    "section_title": "Deep Agents",
+    "category": "agents"
+  },
+  {
+    "type": "lecture",
+    "section": 20,
+    "lecture": 1,
+    "id": 51227279,
+    "title": "ChatModels",
+    "asset_type": "Video",
+    "section_title": "LangChain Glossary",
+    "category": "glossary"
+  },
+  {
+    "type": "lecture",
+    "section": 20,
+    "lecture": 2,
+    "id": 51233211,
+    "title": "Messages",
+    "asset_type": "Video",
+    "section_title": "LangChain Glossary",
+    "category": "glossary"
+  },
+  {
+    "type": "lecture",
+    "section": 20,
+    "lecture": 3,
+    "id": 51340375,
+    "title": "RecursiveCharacterTextSplitter",
+    "asset_type": "Video",
+    "section_title": "LangChain Glossary",
+    "category": "glossary"
+  },
+  {
+    "type": "lecture",
+    "section": 20,
+    "lecture": 4,
+    "id": 51341215,
+    "title": "Document",
+    "asset_type": "Video",
+    "section_title": "LangChain Glossary",
+    "category": "glossary"
+  },
+  {
+    "type": "lecture",
+    "section": 20,
+    "lecture": 5,
+    "id": 37968616,
+    "title": "LangChain Token Limitation Handeling Strategies",
+    "asset_type": "Video",
+    "section_title": "LangChain Glossary",
+    "category": "glossary"
+  },
+  {
+    "type": "lecture",
+    "section": 20,
+    "lecture": 6,
+    "id": 46176243,
+    "title": "LangChain Memory Intro- Co Reference Resolution",
+    "asset_type": "Video",
+    "section_title": "LangChain Glossary",
+    "category": "glossary"
+  },
+  {
+    "type": "lecture",
+    "section": 20,
+    "lecture": 7,
+    "id": 46177713,
+    "title": "LangChain Memory Theory Deepdive (LangGraph)",
+    "asset_type": "Video",
+    "section_title": "LangChain Glossary",
+    "category": "glossary"
+  },
+  {
+    "type": "lecture",
+    "section": 21,
+    "lecture": 1,
+    "id": 54621885,
+    "title": "What is LLM App Sec?",
+    "asset_type": "Video",
+    "section_title": "Agent Security",
+    "category": "security"
+  },
+  {
+    "type": "lecture",
+    "section": 21,
+    "lecture": 2,
+    "id": 54622225,
+    "title": "The Bad of Agentic Coding",
+    "asset_type": "Video",
+    "section_title": "Agent Security",
+    "category": "security"
+  },
+  {
+    "type": "lecture",
+    "section": 22,
+    "lecture": 1,
+    "id": 51951513,
+    "title": "Bonus",
+    "asset_type": "Article",
+    "section_title": "Bonus",
+    "category": "bonus"
+  }
+]

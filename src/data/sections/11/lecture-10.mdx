@@ -1,0 +1,128 @@
+---
+title: "S11-L10: ノードをグラフに接続する"
+description: "StateGraph，条件付きエッジ，should_continue関数によるグラフ構築"
+sectionNumber: 11
+sectionTitle: "Introduction To LangGraph"
+lectureNumber: 10
+lectureTitle: "[Hands On] Bringing Your ReAct Agent to Life: Connecting Nodes into a Graph"
+udemyLectureId: 50659311
+difficulty: "intermediate"
+tags: ["StateGraph", "conditional-edge", "graph-compilation", "LangGraph"]
+category: "langgraph"
+order: 1110
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，定義したノードをLangGraphのグラフとして接続します．StateGraphの構築，条件付きエッジの実装，グラフのコンパイルと可視化を行います．
+
+## グラフの構築
+
+```python
+from langgraph.graph import StateGraph, MessagesState
+
+flow = StateGraph(MessagesState)
+flow.add_node("agent_reason", run_agent_reasoning)
+flow.add_node("act", tool_node)
+flow.set_entry_point("agent_reason")
+```
+
+## should_continue関数（条件付きエッジ）
+
+```python
+def should_continue(state: MessagesState) -> str:
+    last_message = state["messages"][-1]
+    if last_message.tool_calls:
+        return "act"
+    return "end"
+```
+
+最後のメッセージにツール呼び出しがあれば`act`ノードへ，なければ`end`ノードへ遷移します．
+
+## エッジの定義
+
+```python
+flow.add_conditional_edges(
+    "agent_reason",
+    should_continue,
+    {"end": END, "act": "act"}
+)
+flow.add_edge("act", "agent_reason")
+```
+
+- 条件付きエッジ: agent_reason → act または END
+- 通常エッジ: act → agent_reason（ツール実行後，再度推論）
+
+## グラフの可視化
+
+```python
+app = flow.compile()
+app.get_graph().draw_mermaid_png(output_file_path="flow.png")
+```
+
+## まとめ
+
+- StateGraphにノードを追加し，エントリーポイントを設定
+- should_continue関数でツール呼び出しの有無に基づく条件分岐を実装
+- act → agent_reasonのエッジでReActループを構成
+- コンパイル後，Mermaid図やPNG画像でグラフを可視化可能
+
+<Quiz questions={[
+  {
+    question: "StateGraphの初期化時に渡すものは何ですか？",
+    options: [
+      "ノードのリスト",
+      "ステートの型（MessagesState）",
+      "エッジの定義",
+      "LLMインスタンス"
+    ],
+    answer: 1,
+    explanation: "StateGraphの初期化時にはステートの型（この場合MessagesState）を渡します．"
+  },
+  {
+    question: "should_continue関数がactを返す条件は何ですか？",
+    options: [
+      "最後のメッセージがHumanMessageである",
+      "最後のメッセージにツール呼び出しが含まれている",
+      "ステートが空である",
+      "グラフの実行時間が制限を超えた"
+    ],
+    answer: 1,
+    explanation: "should_continue関数は，最後のメッセージにツール呼び出しが含まれている場合にactを返し，ToolNodeへ遷移させます．"
+  },
+  {
+    question: "act → agent_reasonのエッジが存在する理由は何ですか？",
+    options: [
+      "エラー処理のため",
+      "ツール実行後に再度LLMに推論させるReActループを構成するため",
+      "グラフを終了させるため",
+      "ステートをリセットするため"
+    ],
+    answer: 1,
+    explanation: "act → agent_reasonのエッジにより，ツール実行後に再度LLMに推論させるReActループが構成されます．"
+  },
+  {
+    question: "flow.compile()の役割は何ですか？",
+    options: [
+      "コードをバイトコードに変換する",
+      "グラフ定義を実行可能なアプリケーションにコンパイルする",
+      "LLMを初期化する",
+      "ツールをテストする"
+    ],
+    answer: 1,
+    explanation: "flow.compile()はグラフ定義を実行可能なアプリケーションにコンパイルし，invokeメソッドで実行できるようにします．"
+  },
+  {
+    question: "条件付きエッジのマッピングで 'end': END の意味は何ですか？",
+    options: [
+      "should_continue関数がendを返した場合，エラーを発生させる",
+      "should_continue関数がendを返した場合，グラフの終了ノードに遷移する",
+      "should_continue関数がendを返した場合，最初のノードに戻る",
+      "should_continue関数がendを返した場合，すべてのノードを実行する"
+    ],
+    answer: 1,
+    explanation: "should_continue関数がendを返した場合，グラフの組み込みENDノードに遷移し，実行が完了します．"
+  }
+]} />

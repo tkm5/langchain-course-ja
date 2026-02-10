@@ -1,0 +1,143 @@
+---
+title: "S14-L10: LLM生成チェーンとノードの作成"
+description: "LangChain Hubのプロンプトを使用したRAG生成チェーンと生成ノードの実装"
+sectionNumber: 14
+sectionTitle: "Agentic RAG"
+lectureNumber: 10
+lectureTitle: "Creating the LLM Generation Chain and Node for LangGraph"
+udemyLectureId: 51133265
+difficulty: "intermediate"
+tags: ["generation", "langchain-hub", "chain", "rag", "testing"]
+category: "rag"
+order: 1410
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，RAGの最終段階であるLLM生成チェーンとノードを実装します．LangChain Hubから標準的なRAGプロンプトを取得し，ドキュメントと質問を入力として回答を生成します．
+
+## 生成チェーンの実装
+
+### チェーンの構築
+
+```python
+from langchain import hub
+from langchain_core.output_parsers import StrOutputParser
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI()
+
+# LangChain Hubから標準的なRAGプロンプトを取得
+prompt = hub.pull("rlm/rag-prompt")
+
+# 生成チェーン: プロンプト -> LLM -> 文字列出力パーサー
+generation_chain = prompt | llm | StrOutputParser()
+```
+
+LangChain Hubから取得するRAGプロンプトは，LLMに「質問応答アシスタント」の役割を付与し，コンテキスト（取得したドキュメント）と質問を埋め込む標準的なプロンプトです．
+
+### テストの実装
+
+```python
+def test_generation_chain():
+    question = "agent memory"
+    docs = retriever.invoke(question)
+    generation = generation_chain.invoke(
+        {"context": docs, "question": question}
+    )
+    pprint(generation)
+```
+
+## 生成ノードの実装
+
+```python
+def generate(state: GraphState) -> Dict[str, Any]:
+    """LLMで回答を生成するノード
+
+    Args:
+        state: 現在のグラフ状態
+
+    Returns:
+        生成された回答を含む辞書
+    """
+    print("---GENERATE---")
+    question = state["question"]
+    documents = state["documents"]
+
+    generation = generation_chain.invoke(
+        {"context": documents, "question": question}
+    )
+
+    return {
+        "documents": documents,
+        "question": question,
+        "generation": generation,
+    }
+```
+
+## まとめ
+
+- LangChain Hubから標準的なRAGプロンプトを取得して使用する
+- 生成チェーンはプロンプト，LLM，StrOutputParserの3つのコンポーネントで構成される
+- 生成ノードはドキュメントと質問からLLMで回答を生成し，GraphStateの`generation`フィールドを更新する
+- テストでチェーンの動作を検証し，LangSmithでトレースを確認できる
+
+<Quiz questions={[
+  {
+    question: "LangChain Hubから取得するRAGプロンプトの名前は何ですか?",
+    options: [
+      "rlm/qa-prompt",
+      "rlm/rag-prompt",
+      "langchain/rag-template",
+      "openai/rag-standard"
+    ],
+    answer: 1,
+    explanation: "hub.pull('rlm/rag-prompt')でLangChain Hubから標準的なRAGプロンプトを取得します．"
+  },
+  {
+    question: "生成チェーンを構成する3つのコンポーネントの正しい順序はどれですか?",
+    options: [
+      "LLM → プロンプト → StrOutputParser",
+      "StrOutputParser → プロンプト → LLM",
+      "プロンプト → LLM → StrOutputParser",
+      "プロンプト → StrOutputParser → LLM"
+    ],
+    answer: 2,
+    explanation: "生成チェーンはprompt | llm | StrOutputParser()の順で，プロンプト→LLM→文字列出力パーサーの3つで構成されます．"
+  },
+  {
+    question: "StrOutputParserの役割は何ですか?",
+    options: [
+      "LLMの出力をJSON形式に変換する",
+      "LLMの出力を文字列として抽出する",
+      "入力プロンプトを検証する",
+      "出力のトークン数をカウントする"
+    ],
+    answer: 1,
+    explanation: "StrOutputParserはLLMの出力メッセージから文字列コンテンツを抽出し，純粋な文字列として返すパーサーです．"
+  },
+  {
+    question: "生成ノードがGraphStateに更新するフィールドに含まれるのはどれですか?",
+    options: [
+      "documents，question，generationの3つ",
+      "generationのみ",
+      "question，generationの2つ",
+      "documents，generationの2つ"
+    ],
+    answer: 0,
+    explanation: "生成ノードはdocuments，question，generationの3つのフィールドを含む辞書を返してGraphStateを更新します．"
+  },
+  {
+    question: "RAGプロンプトでLLMに付与される役割は何ですか?",
+    options: [
+      "コード生成アシスタント",
+      "質問応答アシスタント",
+      "翻訳アシスタント",
+      "要約アシスタント"
+    ],
+    answer: 1,
+    explanation: "LangChain Hubから取得するRAGプロンプトは，LLMに質問応答アシスタントの役割を付与し，コンテキストと質問に基づいて回答を生成させます．"
+  }
+]} />

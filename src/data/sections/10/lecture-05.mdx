@@ -1,0 +1,104 @@
+---
+title: "S10-L5: LangChain Academyの公式コース"
+description: "LangChainチームが提供する無料の公式学習リソースの紹介"
+sectionNumber: 10
+sectionTitle: "LLM Applications In Production"
+lectureNumber: 5
+lectureTitle: "Official LangChain Academy Courses"
+udemyLectureId: 47459213
+difficulty: "beginner"
+tags: ["LangChain", "LangSmith", "learning-resources", "academy"]
+category: "production"
+order: 1005
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，LangChainチームが公式に提供するLangChain Academyの無料オンラインコースを紹介します．特にLangSmithの本番運用に関する学習リソースを紹介します．
+
+## LangChain Academy
+
+LangChainのウェブサイトのResourcesセクションからアクセスできるLangChain Academyには，LangChainエコシステムに関する無料のオンラインコースが用意されています．
+
+### LangSmithコース
+
+LangSmithコースでは以下の内容を学べます．
+
+- LLMアプリケーションのトレーシング
+- モニタリング
+- 評価（Evaluation）
+- ユーザーからのフィードバック収集
+
+POC（概念実証）から本番アプリケーションへの移行を考えている場合に特に有用です．
+
+### コースの特徴
+
+- 各ビデオにはダウンロード可能なリソースが付属
+- GitHubリポジトリからコードを取得してローカルで実行可能
+- 高品質なプロダクションと体系的な構成
+
+## まとめ
+
+- LangChain Academyは無料で質の高い公式学習リソース
+- LangSmithは現時点でLLMアプリケーションのトレーシング・モニタリング・評価に最も優れたプラットフォームの一つ
+- POCから本番環境への移行に必要な知識を体系的に学べる
+
+<Quiz questions={[
+  {
+    question: "LangChain Academyのコースの特徴として正しいものはどれですか？",
+    options: [
+      "有料のサブスクリプションが必要",
+      "無料で質の高い公式学習リソース",
+      "英語以外の言語には対応していない",
+      "コードサンプルは提供されない"
+    ],
+    answer: 1,
+    explanation: "LangChain Academyは無料で質の高い公式学習リソースを提供しており，各ビデオにはダウンロード可能なリソースも付属しています．"
+  },
+  {
+    question: "LangSmithコースで学べる内容に含まれないものはどれですか？",
+    options: [
+      "LLMアプリケーションのトレーシング",
+      "モニタリング",
+      "モデルのファインチューニング",
+      "評価（Evaluation）"
+    ],
+    answer: 2,
+    explanation: "LangSmithコースではトレーシング，モニタリング，評価，ユーザーフィードバック収集を学べます．モデルのファインチューニングは含まれていません．"
+  },
+  {
+    question: "LangSmithが特に有用な場面はどれですか？",
+    options: [
+      "モデルの学習を行う時",
+      "POCから本番アプリケーションへの移行を考えている場合",
+      "フロントエンドのデザインを行う時",
+      "データベースの設計を行う時"
+    ],
+    answer: 1,
+    explanation: "LangSmithはLLMアプリケーションのトレーシング，モニタリング，評価に優れており，POCから本番アプリケーションへの移行に特に有用です．"
+  },
+  {
+    question: "LangChain Academyのコースにアクセスするにはどこを確認しますか？",
+    options: [
+      "GitHubのリポジトリ",
+      "LangChainウェブサイトのResourcesセクション",
+      "PyPIのパッケージページ",
+      "Stack Overflowのタグ"
+    ],
+    answer: 1,
+    explanation: "LangChainのウェブサイトのResourcesセクションからLangChain Academyにアクセスできます．"
+  },
+  {
+    question: "LangSmithの位置づけとして正しいものはどれですか？",
+    options: [
+      "LLMモデルそのもの",
+      "フロントエンドフレームワーク",
+      "LLMアプリケーションのトレーシング・モニタリング・評価プラットフォーム",
+      "データベース管理ツール"
+    ],
+    answer: 2,
+    explanation: "LangSmithはLLMアプリケーションのトレーシング，モニタリング，評価に最も優れたプラットフォームの一つです．"
+  }
+]} />

@@ -1,0 +1,128 @@
+---
+title: "S11-L8: ReAct Runnableの実装"
+description: "Function CallingでLLMにツールをバインドし，推論エンジンを構築する"
+sectionNumber: 11
+sectionTitle: "Introduction To LangGraph"
+lectureNumber: 8
+lectureTitle: "[Hands On] Coding the Agent's Brain: Implementing the ReAct Runnable"
+udemyLectureId: 50650905
+difficulty: "intermediate"
+tags: ["function-calling", "tools", "LLM", "bind-tools", "ReAct"]
+category: "langgraph"
+order: 1108
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，react.pyファイルにエージェントの推論ロジックを実装します．Function Callingを活用してLLMにツールをバインドし，推論エンジンを構築します．
+
+## ツールの定義
+
+### カスタムツール（triple関数）
+
+```python
+from langchain_core import tool
+
+@tool
+def triple(num: float) -> float:
+    """入力された数値を3倍にして返す"""
+    return num * 3
+```
+
+### ツールリスト
+
+```python
+from langchain_community.tools.tavily_search import TavilySearchResults
+
+tools = [
+    TavilySearchResults(max_results=1),
+    triple,
+]
+```
+
+## Function Callingの実装
+
+ReActプロンプトの代わりにFunction Callingを使用します．
+
+```python
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI()
+llm_with_tools = llm.bind_tools(tools)
+```
+
+`bind_tools`メソッドにより，LLMは各リクエストでツールの説明を受け取り，適切なツール呼び出しを返します．
+
+## Function Callingの利点
+
+- ReActプロンプトが不要になる
+- 出力のパーシングをLLMベンダーに委譲できる
+- ベンダーの専門エンジニアが品質を継続的に改善
+- 開発者が書くコードが大幅に削減される
+
+## まとめ
+
+- `@tool`デコレータでPython関数をLangChainツールに変換
+- `bind_tools`でLLMにツール情報をバインド
+- Function CallingはReActプロンプトの進化形で，より信頼性が高い
+- パーシング処理がベンダー側に移り，開発者の負担が軽減
+
+<Quiz questions={[
+  {
+    question: "bind_toolsメソッドの役割は何ですか？",
+    options: [
+      "ツールを実行する",
+      "LLMにツール情報をバインドし，各リクエストでツール説明を送信する",
+      "ツールの結果をパースする",
+      "ツールを永続化する"
+    ],
+    answer: 1,
+    explanation: "bind_toolsメソッドにより，LLMは各リクエストでツールの説明を受け取り，適切なツール呼び出しを判断して返すことができます．"
+  },
+  {
+    question: "@toolデコレータの役割は何ですか？",
+    options: [
+      "関数の実行速度を向上させる",
+      "Python関数をLangChainツールに変換する",
+      "関数のテストを自動化する",
+      "関数のドキュメントを生成する"
+    ],
+    answer: 1,
+    explanation: "@toolデコレータにより，通常のPython関数をLangChainのツールとして使えるように変換できます．"
+  },
+  {
+    question: "Function CallingがReActプロンプトより優れている点は何ですか？",
+    options: [
+      "処理速度が速い",
+      "出力のパーシングをLLMベンダーに委譲でき，信頼性が高い",
+      "すべてのLLMで利用可能",
+      "コストが安い"
+    ],
+    answer: 1,
+    explanation: "Function Callingでは出力のパーシングをLLMベンダーに委譲でき，ベンダーの専門エンジニアが品質を継続的に改善するため，より信頼性が高くなります．"
+  },
+  {
+    question: "triple関数の機能は何ですか？",
+    options: [
+      "テキストを3回繰り返す",
+      "入力された数値を3倍にして返す",
+      "3つの検索結果を返す",
+      "3つのLLMを同時に呼び出す"
+    ],
+    answer: 1,
+    explanation: "triple関数は入力された数値を3倍にして返すカスタムツールです．"
+  },
+  {
+    question: "TavilySearchResultsの設定で max_results=1 とする意味は何ですか？",
+    options: [
+      "検索を1回だけ実行する",
+      "検索結果を最大1件返す",
+      "1秒以内に結果を返す",
+      "1ページ目のみ検索する"
+    ],
+    answer: 1,
+    explanation: "max_results=1は，Tavily検索ツールが返す検索結果の最大件数を1件に制限する設定です．"
+  }
+]} />

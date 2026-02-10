@@ -1,0 +1,113 @@
+---
+title: "S11-L7: プロジェクト環境セットアップ"
+description: "ReActエージェントプロジェクトのPoetry環境構築と依存関係のインストール"
+sectionNumber: 11
+sectionTitle: "Introduction To LangGraph"
+lectureNumber: 7
+lectureTitle: "[Hands On] Get Started: Setting Up Your ReAct Agent Project Environment"
+udemyLectureId: 50029463
+difficulty: "beginner"
+tags: ["setup", "poetry", "environment", "LangGraph"]
+category: "langgraph"
+order: 1107
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，ReActグラフプロジェクトのボイラープレートセットアップを行います．Poetry環境の構築，依存パッケージのインストール，環境変数の設定を行います．
+
+## セットアップ手順
+
+### 1. Poetryプロジェクトの初期化
+
+```python
+poetry init
+```
+
+### 2. 依存パッケージのインストール
+
+```python
+poetry add langchain langchain-openai langchain-tavily langgraph python-dotenv black isort
+```
+
+### 3. 環境変数の設定（.envファイル）
+
+```
+OPENAI_API_KEY=your_key
+LANGCHAIN_API_KEY=your_key
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_PROJECT=react-function-calling
+TAVILY_API_KEY=your_key
+```
+
+### 4. プロジェクト構造
+
+- `main.py`: エントリーポイント
+- `react.py`: 推論エンジン
+- `nodes.py`: グラフノードの実装
+
+## まとめ
+
+- Poetryで仮想環境を構築し，LangGraph関連パッケージをインストール
+- .envファイルにOpenAI，LangSmith，TavilyのAPIキーを設定
+- main.py，react.py，nodes.pyの3ファイル構成でプロジェクトを開始
+
+<Quiz questions={[
+  {
+    question: "LangGraphプロジェクトで使用されるパッケージマネージャはどれですか？",
+    options: [
+      "pip",
+      "conda",
+      "Poetry",
+      "npm"
+    ],
+    answer: 2,
+    explanation: "このプロジェクトではPoetryを使用して仮想環境を構築し，依存パッケージを管理します．"
+  },
+  {
+    question: "LANGCHAIN_TRACING_V2環境変数をtrueに設定する目的は何ですか？",
+    options: [
+      "LLMの応答速度を向上させる",
+      "LangSmithでのトレーシングを有効にする",
+      "デバッグモードを有効にする",
+      "テスト環境を有効にする"
+    ],
+    answer: 1,
+    explanation: "LANGCHAIN_TRACING_V2=trueにより，LangSmithでのトレーシング機能が有効になり，グラフの実行を監視できます．"
+  },
+  {
+    question: "プロジェクトの3ファイル構成の中で，推論エンジンを定義するファイルはどれですか？",
+    options: [
+      "main.py",
+      "react.py",
+      "nodes.py",
+      "tools.py"
+    ],
+    answer: 1,
+    explanation: "react.pyが推論エンジンを定義するファイルであり，main.pyはエントリーポイント，nodes.pyはグラフノードの実装です．"
+  },
+  {
+    question: "Tavilyの役割は何ですか？",
+    options: [
+      "LLMモデルを提供する",
+      "Web検索ツールを提供する",
+      "ベクトルストアを提供する",
+      "フロントエンドフレームワークを提供する"
+    ],
+    answer: 1,
+    explanation: "TavilyはWeb検索ツールを提供するサービスで，エージェントが外部情報を取得するために使用されます．"
+  },
+  {
+    question: ".envファイルに設定する必要がないAPIキーはどれですか？",
+    options: [
+      "OPENAI_API_KEY",
+      "LANGCHAIN_API_KEY",
+      "TAVILY_API_KEY",
+      "GITHUB_API_KEY"
+    ],
+    answer: 3,
+    explanation: "このプロジェクトではOPENAI_API_KEY，LANGCHAIN_API_KEY，TAVILY_API_KEYが必要です．GITHUB_API_KEYは不要です．"
+  }
+]} />

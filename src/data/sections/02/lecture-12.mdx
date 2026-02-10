@@ -1,0 +1,108 @@
+---
+title: "S2-Q2: LangChainモデル切り替え - Groq API統合クイズ"
+description: "LangChainでのモデル切り替えとGroq APIの統合に関するクイズ"
+sectionNumber: 2
+sectionTitle: "The GIST of LangChain"
+lectureNumber: 12
+lectureTitle: "LangChain Model Switching: Groq API Integration"
+difficulty: "beginner"
+tags: ["quiz", "model-switching", "groq", "langchain"]
+category: "langchain-basics"
+order: 212
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このクイズでは，LangChainでのLLMモデルの切り替えに関する知識を確認します．特にGroq APIの統合を題材として，プロバイダー間の切り替えの仕組みを理解しているかをテストします．
+
+## 学習ポイント
+
+```text
+┌─────────────────────────────────────────┐
+│     モデル切り替えの復習ポイント          │
+├─────────────────────────────────────────┤
+│  1. 統合パッケージの仕組み              │
+│     langchain-openai                    │
+│     langchain-ollama                    │
+│     langchain-google-genai              │
+├─────────────────────────────────────────┤
+│  2. Chat Modelインターフェースの統一性  │
+├─────────────────────────────────────────┤
+│  3. 変更箇所はChat Modelの初期化のみ   │
+├─────────────────────────────────────────┤
+│  4. 環境変数によるAPIキー管理           │
+└─────────────────────────────────────────┘
+```
+
+クイズに取り組む前に，以下のポイントを復習しておくことを推奨します．
+
+- LangChainの統合パッケージ（langchain-openai，langchain-ollama等）の仕組み
+- Chat Modelインターフェースの統一性
+- プロバイダー切り替えに必要な変更箇所
+- 環境変数によるAPIキー管理
+
+## まとめ
+
+- LangChainはプロバイダーごとに独立したパッケージを提供
+- Chat Modelインターフェースにより，コードの大部分を変更せずにモデルを切り替え可能
+- Groqなどのクラウドベースプロバイダーもシンプルに統合できる
+
+<Quiz questions={[
+  {
+    question: "LangChainでモデルを切り替える際に変更が必要な箇所はどこですか？",
+    options: [
+      "チェーン全体のコード",
+      "Chat Modelの初期化部分のみ",
+      "環境変数ファイルのみ",
+      "プロンプトテンプレート"
+    ],
+    answer: 1,
+    explanation: "Chat Modelインターフェースの統一性により，Chat Modelの初期化部分のみを変更すればモデルを切り替えられます．"
+  },
+  {
+    question: "langchain-openaiパッケージの役割は何ですか？",
+    options: [
+      "LangChainのコア機能を提供する",
+      "OpenAI固有の統合機能を提供する",
+      "テスト機能を提供する",
+      "ドキュメント生成機能を提供する"
+    ],
+    answer: 1,
+    explanation: "langchain-openaiはOpenAI固有の統合機能を含む独立したパッケージです．"
+  },
+  {
+    question: "プロバイダーごとにパッケージが分離されている利点はどれですか？",
+    options: [
+      "全モデルを一度にインストールできる",
+      "各ベンダーが独立して管理でき，不要なプロバイダーをインストール不要",
+      "インストール時間が長くなる",
+      "セキュリティが低下する"
+    ],
+    answer: 1,
+    explanation: "プロバイダーごとの分離により，各ベンダーが独立してパッケージを管理でき，不要なプロバイダーをダウンロードする必要がなくなります．"
+  },
+  {
+    question: "Chat Modelインターフェースが統一されていることの最大の利点は何ですか？",
+    options: [
+      "コードの実行速度が向上する",
+      "コードの大部分を変更せずにモデルを切り替えできる",
+      "無料で全モデルを使用できる",
+      "自動的に最適なモデルが選択される"
+    ],
+    answer: 1,
+    explanation: "Chat Modelインターフェースの統一により，コードの大部分を変更せずにモデルを切り替え可能です．"
+  },
+  {
+    question: "Groqのようなクラウドベースプロバイダーの統合に必要なものは何ですか？",
+    options: [
+      "特別なハードウェア",
+      "APIキーと対応するLangChain統合パッケージ",
+      "ローカルにモデルをダウンロード",
+      "専用のVPNサービス"
+    ],
+    answer: 1,
+    explanation: "Groqなどのクラウドベースプロバイダーは，APIキーの生成と対応するLangChain統合パッケージのインストールでシンプルに統合できます．"
+  }
+]} />

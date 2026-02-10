@@ -1,0 +1,155 @@
+---
+title: "S3-L7: TavilyとLangChainツールによる実世界の検索統合"
+description: "静的なツールをTavily SDKで実装し，さらにLangChain統合ツールへ切り替える"
+sectionNumber: 3
+sectionTitle: "THE GIST Of AI Agents"
+lectureNumber: 7
+lectureTitle: "Integrating Real-World Search with Tavily and LangChain Tools"
+udemyLectureId: 53365489
+difficulty: "beginner"
+tags: ["tavily", "tools", "search", "langchain-integration"]
+category: "agents"
+order: 307
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，静的な文字列を返すだけだった検索ツールをTavily SDKで実装し，リアルタイムのWeb検索機能を持つエージェントに進化させます．さらに，LangChain統合ツール（`TavilySearch`）への切り替えも行います．
+
+## カスタムツールでのTavily統合
+
+まず，カスタムツール内でTavily SDKを直接使用します．
+
+```python
+from tavily import TavilyClient
+
+tavily = TavilyClient()
+
+@tool
+def search(query: str) -> str:
+    """A tool that searches over the internet."""
+    return tavily.search(query=query)
+```
+
+これにより，エージェントがリアルタイムのWeb検索結果を取得できるようになります．
+
+## LangChain統合ツールへの切り替え
+
+ベストプラクティスとして，カスタムツールよりもベンダー提供のLangChain統合ツールを使用することが推奨されます．
+
+```python
+from langchain_tavily import TavilySearch
+
+tools = [TavilySearch()]
+```
+
+### 統合ツールの利点
+
+```text
+┌──────────────────────────────────────────────┐
+│     カスタムツール vs 統合ツール               │
+├──────────────────────────────────────────────┤
+│  カスタムツール:                               │
+│    - 基本的なquery引数のみ                    │
+│    - 開発者がSDKのAPIを把握する必要あり       │
+│                                              │
+│  統合ツール（TavilySearch）:                   │
+│    - include_domains, search_depth等の        │
+│      追加引数をLLMが自動活用                  │
+│    - ベンダー提供の優れた説明文               │
+│    - より正確なツール呼び出し                 │
+└──────────────────────────────────────────────┘
+```
+
+- ベンダーが自社製品を最もよく理解しているため，より優れた説明文と引数定義を提供
+- `include_domains`や`search_depth`などの追加引数をLLMが自動的に活用
+- より正確なツール呼び出しが実現される
+- 開発者がSDKの全APIを把握する必要がない
+
+### LangSmithでの比較
+
+LangSmithのトレースで，カスタムツールと統合ツールの違いを確認できます．
+
+- カスタムツール: 基本的な`query`引数のみ
+- 統合ツール: `include_domains`（例: linkedin.com），`search_depth`（例: advanced）などの追加引数をLLMが自動選択
+
+## 求人検索クエリの実行
+
+より高度なクエリを実行すると，エージェントが複数の検索ツールを並列実行する様子を確認できます．
+
+```python
+result = agent.invoke({
+    "messages": HumanMessage(
+        content="Search for three job postings for an AI engineer "
+                "using LangChain in the Bay area on LinkedIn "
+                "and list their details"
+    )
+})
+```
+
+## まとめ
+
+- カスタムツールよりもベンダー提供のLangChain統合ツールを使うのがベストプラクティス
+- `TavilySearch`はTavilyチームが作成したLangChainツール
+- 統合ツールはより詳細な説明と引数を持ち，LLMがより精度の高いツール呼び出しを行える
+- エージェントは複数のツール呼び出しを並列実行できる
+
+<Quiz questions={[
+  {
+    question: "カスタムツールよりもベンダー提供のLangChain統合ツールを使うべき理由は何ですか？",
+    options: [
+      "カスタムツールは動作しないから",
+      "統合ツールはより優れた説明文と引数定義を持ち，より精度の高い呼び出しが実現されるから",
+      "統合ツールのほうが無料だから",
+      "カスタムツールはPythonで作れないから"
+    ],
+    answer: 1,
+    explanation: "ベンダーが自社製品を最もよく理解しているため，より優れた説明文と引数定義を提供し，LLMがより精度の高いツール呼び出しを行えます．"
+  },
+  {
+    question: "TavilySearchを使うために必要なインポートはどれですか？",
+    options: [
+      "from tavily import TavilySearch",
+      "from langchain_tavily import TavilySearch",
+      "from langchain.tools import TavilySearch",
+      "from langchain_core import TavilySearch"
+    ],
+    answer: 1,
+    explanation: "TavilySearchはlangchain_tavilyパッケージからインポートします．"
+  },
+  {
+    question: "統合ツールがカスタムツールより優れている具体的な例はどれですか？",
+    options: [
+      "実行速度が速い",
+      "include_domainsやsearch_depthなどの追加引数をLLMが自動選択する",
+      "エラーが発生しない",
+      "コードが短くなる"
+    ],
+    answer: 1,
+    explanation: "統合ツールではinclude_domains（例: linkedin.com），search_depth（例: advanced）などの追加引数をLLMが自動的に選択します．"
+  },
+  {
+    question: "エージェントが複数の検索を行う場合の動作はどうなりますか？",
+    options: [
+      "1つずつ順番に実行する",
+      "複数のツール呼び出しを並列実行できる",
+      "最初の1つだけ実行する",
+      "エラーが発生する"
+    ],
+    answer: 1,
+    explanation: "エージェントは複数のツール呼び出しを並列で実行することができます．"
+  },
+  {
+    question: "TavilySearch統合ツールを作成したのは誰ですか？",
+    options: [
+      "LangChainチーム",
+      "OpenAIチーム",
+      "Tavilyチーム",
+      "コミュニティの有志"
+    ],
+    answer: 2,
+    explanation: "TavilySearchはTavilyチームが作成したLangChain統合ツールです．"
+  }
+]} />

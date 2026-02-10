@@ -1,0 +1,87 @@
+---
+title: "S10-L7: AI結果の信頼性"
+description: "Assaf ElovicとHarrison ChaseによるAI結果の信頼性についての対談"
+sectionNumber: 10
+sectionTitle: "LLM Applications In Production"
+lectureNumber: 7
+lectureTitle: "Confidence in AI Results By Assaf Elovic & Harrison Chase"
+udemyLectureId: 50890333
+difficulty: "intermediate"
+tags: ["confidence", "AI-results", "production", "interview"]
+category: "production"
+order: 1007
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，Assaf Elovic氏とLangChainの創設者Harrison Chase氏が，AI結果の信頼性について議論します．本番環境でのLLMアプリケーションにおいて，生成された結果の品質をどのように担保するかという重要なテーマを扱います．
+
+## 主なトピック
+
+AI結果の信頼性（Confidence）は，LLMアプリケーションを本番環境で運用する上で最も重要な課題の一つです．LLMの出力は確率的であり，毎回同じ結果が得られる保証はありません．この対談では，信頼性を高めるための実践的なアプローチについて議論されています．
+
+## まとめ
+
+- AI結果の信頼性は本番運用における最重要課題の一つ
+- LLMの確率的な性質を理解した上での品質担保が必要
+- 評価とモニタリングの仕組みを組み込むことが重要
+
+<Quiz questions={[
+  {
+    question: "AI結果の信頼性が本番運用で重要な理由は何ですか？",
+    options: [
+      "開発コストを削減するため",
+      "LLMの出力は確率的であり，毎回同じ結果が得られる保証がないため",
+      "ユーザーインターフェースを美しくするため",
+      "開発速度を向上させるため"
+    ],
+    answer: 1,
+    explanation: "LLMの出力は確率的であり，毎回同じ結果が得られる保証がないため，本番環境では信頼性の担保が最重要課題となります．"
+  },
+  {
+    question: "AI結果の品質を担保するために必要なアプローチはどれですか？",
+    options: [
+      "モデルのサイズを大きくする",
+      "評価とモニタリングの仕組みを組み込む",
+      "すべてのリクエストを手動で確認する",
+      "モデルの温度を常に0に設定する"
+    ],
+    answer: 1,
+    explanation: "評価とモニタリングの仕組みを組み込むことが，AI結果の品質を担保するために重要です．"
+  },
+  {
+    question: "LangChainの創設者は誰ですか？",
+    options: [
+      "Assaf Elovic",
+      "Sam Altman",
+      "Harrison Chase",
+      "Andrej Karpathy"
+    ],
+    answer: 2,
+    explanation: "Harrison ChaseはLangChainの創設者であり，このレクチャーではAI結果の信頼性について議論しています．"
+  },
+  {
+    question: "LLMの確率的な性質が意味するものは何ですか？",
+    options: [
+      "常に正確な回答を返す",
+      "入力に対して常に同じ出力を返す",
+      "同じ入力でも異なる出力が生成される可能性がある",
+      "エラーは絶対に発生しない"
+    ],
+    answer: 2,
+    explanation: "LLMの確率的な性質により，同じ入力に対しても異なる出力が生成される可能性があり，これが信頼性の課題となります．"
+  },
+  {
+    question: "本番環境でのAI結果の信頼性を高めるために必要でないものはどれですか？",
+    options: [
+      "評価の仕組み",
+      "モニタリング",
+      "品質担保メカニズム",
+      "手動でのすべての出力レビュー"
+    ],
+    answer: 3,
+    explanation: "手動ですべての出力をレビューすることはスケーラブルではなく，自動的な評価・モニタリングの仕組みを組み込むことが重要です．"
+  }
+]} />

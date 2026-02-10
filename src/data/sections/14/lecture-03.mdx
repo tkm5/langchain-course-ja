@@ -1,0 +1,155 @@
+---
+title: "S14-L3: Agentic RAGプロジェクトのボイラープレートセットアップ"
+description: "LangGraphを使ったAgentic RAGプロジェクトの環境構築とPoetryによる依存関係管理"
+sectionNumber: 14
+sectionTitle: "Agentic RAG"
+lectureNumber: 3
+lectureTitle: "Boilerplate Setup for an Agentic RAG Agent with LangGraph"
+udemyLectureId: 51132387
+difficulty: "intermediate"
+tags: ["setup", "poetry", "environment", "langgraph", "chromadb"]
+category: "rag"
+order: 1403
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，Agentic RAGプロジェクトの環境構築を行います．プロジェクトディレクトリの作成，Poetryによる仮想環境の構築，依存パッケージのインストール，環境変数の設定を実施します．
+
+## プロジェクトの初期化
+
+### ディレクトリ作成と仮想環境の構築
+
+```python
+# プロジェクトディレクトリの作成と初期化
+mkdir langgraph-course
+cd langgraph-course
+poetry init
+```
+
+### 依存パッケージのインストール
+
+```text
+┌─────────────────────────────────────────────┐
+│          依存パッケージの構成                │
+├─────────────────┬───────────────────────────┤
+│ LangChainコア   │ langchain, langgraph,     │
+│                 │ langchain-hub,            │
+│                 │ langchain-community       │
+├─────────────────┼───────────────────────────┤
+│ ベクトルストア  │ chromadb                  │
+├─────────────────┼───────────────────────────┤
+│ 検索エンジン    │ tavily-python             │
+├─────────────────┼───────────────────────────┤
+│ ユーティリティ  │ beautifulsoup4,           │
+│                 │ python-dotenv             │
+├─────────────────┼───────────────────────────┤
+│ 開発ツール      │ black, isort, pytest      │
+└─────────────────┴───────────────────────────┘
+```
+
+Poetryを使用して以下のパッケージをインストールします．
+
+```bash
+poetry add beautifulsoup4 langchain langgraph langchain-hub langchain-community \
+  tavily-python chromadb python-dotenv black isort pytest
+```
+
+- `beautifulsoup4`: Webからのドキュメント読み込み時にLangChainが使用
+- `langchain`, `langgraph`, `langchain-hub`: LangChainエコシステムの主要パッケージ
+- `langchain-community`: サードパーティ製ローダーを使用するため
+- `tavily-python`: 検索エンジンSDK
+- `chromadb`: オープンソースのベクトルストア
+- `python-dotenv`: 環境変数の管理
+- `black`, `isort`: コードフォーマッター
+- `pytest`: テストフレームワーク
+
+### 環境変数の設定
+
+`.env`ファイルを作成し，以下の環境変数を設定します．
+
+```bash
+OPENAI_API_KEY=your-openai-api-key
+TAVILY_API_KEY=your-tavily-api-key
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_PROJECT=crag
+PYTHONPATH=.
+```
+
+## 動作確認
+
+メインファイルを作成し，環境変数の読み込みと基本的な動作確認を行います．
+
+```python
+from dotenv import load_dotenv
+
+load_dotenv()
+print("Hello Advanced RAG")
+```
+
+## まとめ
+
+- Poetryを使用してプロジェクトの仮想環境と依存関係を管理する
+- LangChain，LangGraph，ChromaDB，Tavilyなどの必要なパッケージをインストールする
+- `.env`ファイルでAPIキーやトレーシング設定を管理する
+- GitHubリポジトリのブランチ`1-start-here`で完全なコードを確認可能
+
+<Quiz questions={[
+  {
+    question: "beautifulsoup4パッケージの用途は何ですか?",
+    options: [
+      "ベクトルストアのクエリ最適化",
+      "Webからのドキュメント読み込み時にLangChainが使用",
+      "LLMの出力をパースする",
+      "テストレポートの生成"
+    ],
+    answer: 1,
+    explanation: "beautifulsoup4はWebページのHTMLをパースするために使われ，LangChainのWebBaseLoaderがドキュメント読み込み時に内部で使用します．"
+  },
+  {
+    question: "ChromaDBの役割は何ですか?",
+    options: [
+      "LLMの推論を高速化する",
+      "オープンソースのベクトルストアとして使用する",
+      "APIキーを安全に管理する",
+      "コードのフォーマッティングを行う"
+    ],
+    answer: 1,
+    explanation: "ChromaDBはオープンソースのベクトルストアで，ドキュメントの埋め込みベクトルを保存し，セマンティック検索を可能にします．"
+  },
+  {
+    question: "PYTHONPATHを.に設定する理由は何ですか?",
+    options: [
+      "Pythonのバージョンを指定するため",
+      "プロジェクトルートからのインポートを可能にするため",
+      "テストの実行速度を向上させるため",
+      "環境変数の暗号化を有効にするため"
+    ],
+    answer: 1,
+    explanation: "PYTHONPATH=.を設定することで，プロジェクトルートディレクトリからのモジュールインポートが可能になります．"
+  },
+  {
+    question: "このプロジェクトで使用するテストフレームワークはどれですか?",
+    options: [
+      "unittest",
+      "nose",
+      "pytest",
+      "doctest"
+    ],
+    answer: 2,
+    explanation: "このプロジェクトではpytestをテストフレームワークとして使用し，チェーンとノードの正確性を検証します．"
+  },
+  {
+    question: "LANGCHAIN_PROJECTの値として設定されているのは何ですか?",
+    options: [
+      "agentic-rag",
+      "crag",
+      "langgraph-course",
+      "advanced-rag"
+    ],
+    answer: 1,
+    explanation: "LANGCHAIN_PROJECT=cragが設定されており，LangSmithでのトレーシング時にCorrective RAGプロジェクトとして表示されます．"
+  }
+]} />

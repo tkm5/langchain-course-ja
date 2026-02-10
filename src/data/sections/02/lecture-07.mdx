@@ -1,0 +1,148 @@
+---
+title: "S2-L7: LangChainとOllamaでローカルモデルを使用する"
+description: "Ollamaを使ってGemma 3などのオープンウェイトモデルをローカルで実行する方法"
+sectionNumber: 2
+sectionTitle: "The GIST of LangChain"
+lectureNumber: 7
+lectureTitle: "Using Local Open-Weights Models with LangChain and Ollama"
+udemyLectureId: 52016041
+difficulty: "beginner"
+tags: ["langchain", "ollama", "local-model", "gemma", "open-weights"]
+category: "langchain-basics"
+order: 207
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，OpenAIのGPTからOllamaを使ったローカルのオープンウェイトモデル（Gemma 3）への切り替え方法を紹介します．LangChainの大きな強みであるモデルの簡単な切り替えを実演します．
+
+## LangChainのモデル切り替え
+
+LangChainの最大の強みの一つは，モデルを「靴下を替えるように」簡単に切り替えられることです．インターフェース全体は同一で，Chat Modelの初期化部分の1行だけを変更すればよいのです．
+
+## Ollamaのセットアップ
+
+### インストール
+
+1. [Ollama公式サイト](https://ollama.ai)からダウンロードしてインストール
+2. ターミナルで`ollama`コマンドが使えることを確認
+
+### モデルのダウンロード
+
+```bash
+# 利用可能なモデルを確認
+ollama list
+
+# モデルをダウンロード（例: Gemma 3の軽量版）
+ollama pull gemma3:1b
+
+# モデルとのチャットをテスト
+ollama run gemma3:1b
+```
+
+コース全体で使用する場合は，GPT o3sのようなFunction Callingをサポートするモデルが推奨されます．ただしモデルサイズが大きいので，マシンのスペックに応じて選択してください．
+
+## LangChainでのOllama統合
+
+```text
+┌────────────────────────────────────────────┐
+│          モデル切り替えの簡単さ              │
+├────────────────────────────────────────────┤
+│                                            │
+│  OpenAI:                                   │
+│    llm = ChatOpenAI(model="gpt-4o")        │
+│              ↓ 1行変更するだけ              │
+│  Ollama:                                   │
+│    llm = ChatOllama(model="gemma3:1b")     │
+│                                            │
+│  残りのチェーンコードは変更不要！            │
+└────────────────────────────────────────────┘
+```
+
+LangChainコードの変更は最小限です．
+
+```python
+from langchain_ollama import ChatOllama
+
+# OpenAIモデルの代わりにOllamaモデルを使用
+llm = ChatOllama(temperature=0, model="gemma3:1b")
+```
+
+既存のチェーンコードは一切変更する必要がありません．`langchain-ollama`パッケージがインストールされていれば，そのまま動作します．
+
+## オープンウェイトモデルのトレードオフ
+
+ローカルのオープンウェイトモデルには以下のトレードオフがあります．
+
+- メリット: 超高速（ローカル実行），無料，プライバシー保護
+- デメリット: 軽量モデルの場合，応答品質がトップティアモデルより低い可能性がある
+
+例えば，Gemma 3の軽量版では，要約は生成できても「興味深い事実」のセクション分離ができないケースがあります．これは指示に完全に従えないためです．
+
+## まとめ
+
+- LangChainではChat Modelの初期化1行を変更するだけでモデルを切り替えられる
+- Ollamaを使えばオープンウェイトモデルをローカルで実行可能
+- `langchain-ollama`パッケージでLangChainと統合
+- 軽量モデルは高速だが，応答品質にトレードオフがある
+- コース全体ではFunction Calling対応モデル（GPT o3sなど）を推奨
+
+<Quiz questions={[
+  {
+    question: "LangChainでモデルを切り替えるために必要な変更はどの程度ですか？",
+    options: [
+      "コード全体を書き直す必要がある",
+      "Chat Modelの初期化1行を変更するだけ",
+      "設定ファイルを5つ以上変更する",
+      "新しいプロジェクトを作り直す必要がある"
+    ],
+    answer: 1,
+    explanation: "LangChainではChat Modelの初期化1行を変更するだけでモデルを切り替えられます．"
+  },
+  {
+    question: "Ollamaの主な役割は何ですか？",
+    options: [
+      "クラウドベースのLLMサービスを提供する",
+      "オープンウェイトモデルをローカルマシンで実行する",
+      "LLMのトレーニングを行う",
+      "APIキーを管理する"
+    ],
+    answer: 1,
+    explanation: "Ollamaはオープンウェイトモデルをローカルマシンで実行するためのツールです．"
+  },
+  {
+    question: "ローカルのオープンウェイトモデルのメリットはどれですか？",
+    options: [
+      "常にトップティアの品質",
+      "超高速，無料，プライバシー保護",
+      "自動でモデルが更新される",
+      "インターネット接続が必要"
+    ],
+    answer: 1,
+    explanation: "ローカルのオープンウェイトモデルはローカル実行のため超高速，無料，プライバシー保護が利点です．"
+  },
+  {
+    question: "軽量なオープンウェイトモデルのデメリットは何ですか？",
+    options: [
+      "インストールが難しい",
+      "有料である",
+      "応答品質がトップティアモデルより低い可能性がある",
+      "LangChainと互換性がない"
+    ],
+    answer: 2,
+    explanation: "軽量モデルの場合，応答品質がトップティアモデルより低い可能性があります．例えば指示に完全に従えないケースがあります．"
+  },
+  {
+    question: "コース全体で推奨されるモデルの条件は何ですか？",
+    options: [
+      "最も軽量なモデル",
+      "日本語対応モデル",
+      "Function Callingをサポートするモデル",
+      "画像生成対応モデル"
+    ],
+    answer: 2,
+    explanation: "コース全体ではFunction Callingをサポートするモデルが推奨されます．エージェントタスクに必要だからです．"
+  }
+]} />

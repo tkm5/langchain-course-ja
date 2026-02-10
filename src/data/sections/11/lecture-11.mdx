@@ -1,0 +1,114 @@
+---
+title: "S11-L11: LangGraph ReActエージェントの実行"
+description: "構築したReActグラフを実行し，LangSmithでトレースを確認する"
+sectionNumber: 11
+sectionTitle: "Introduction To LangGraph"
+lectureNumber: 11
+lectureTitle: "[Hands On] Running Our LangGraph React Agent with Function Calling"
+udemyLectureId: 50679481
+difficulty: "intermediate"
+tags: ["execution", "tracing", "LangSmith", "LangGraph", "ReAct"]
+category: "langgraph"
+order: 1111
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，構築したLangGraph ReActエージェントを実行し，LangSmithのトレースを通じて実行フローを詳しく確認します．
+
+## グラフの実行
+
+```python
+result = app.invoke({
+    "messages": [HumanMessage(content="What is the temperature in Tokyo? List it and then triple it.")]
+})
+print(result["messages"][-1].content)
+```
+
+エージェントは以下の手順で問題を解決します．
+
+1. 検索ツールで東京の気温を取得
+2. 結果が不十分な場合，再度検索
+3. triple関数で気温を3倍に計算
+4. 最終回答を生成
+
+## LangSmithでのトレース分析
+
+トレースでは以下のノード実行が確認できます．
+
+1. agent_reason: 検索ツールの呼び出しを決定
+2. should_continue: 条件付きエッジでactノードへ
+3. act: Tavily検索を実行
+4. agent_reason: 検索結果を確認，追加検索やtriple関数の呼び出しを決定
+5. このループを必要回数繰り返す
+
+## 検索結果の品質対策
+
+検索結果が不十分な場合，エージェントは自動的に再検索します．`max_results`を増やすことで，1回の検索で必要な情報を得られる確率を高められます．
+
+## まとめ
+
+- LangGraphのReActエージェントは検索と計算を組み合わせた複合タスクを処理可能
+- LangSmithでノード実行，条件分岐，ツール呼び出しの詳細をトレース可能
+- 検索結果が不十分な場合，エージェントは自動的に再検索する知性を持つ
+- Function Callingにより安定性とパフォーマンスが向上
+
+<Quiz questions={[
+  {
+    question: "エージェントが「東京の気温を3倍にして」という質問を処理する手順として正しいものはどれですか？",
+    options: [
+      "triple関数で3倍にしてから検索する",
+      "検索ツールで気温を取得し，triple関数で3倍に計算する",
+      "LLM内部で直接計算する",
+      "2回の検索で気温と3倍の値を取得する"
+    ],
+    answer: 1,
+    explanation: "エージェントはまず検索ツールで東京の気温を取得し，その後triple関数で気温を3倍に計算し，最終回答を生成します．"
+  },
+  {
+    question: "LangSmithのトレースで確認できる情報として正しくないものはどれですか？",
+    options: [
+      "ノード実行の順序",
+      "条件分岐の結果",
+      "LLMの内部パラメータの変化",
+      "ツール呼び出しの詳細"
+    ],
+    answer: 2,
+    explanation: "LangSmithのトレースではノード実行，条件分岐，ツール呼び出しの詳細を確認できますが，LLMの内部パラメータの変化は確認できません．"
+  },
+  {
+    question: "検索結果が不十分な場合，エージェントはどう対処しますか？",
+    options: [
+      "エラーを返す",
+      "空の回答を返す",
+      "自動的に再検索する",
+      "ユーザーに追加情報を要求する"
+    ],
+    answer: 2,
+    explanation: "検索結果が不十分な場合，エージェントは自動的に再検索する知性を持っています．"
+  },
+  {
+    question: "app.invokeメソッドに渡す入力の形式は何ですか？",
+    options: [
+      "文字列",
+      "メッセージリストを含む辞書",
+      "JSON文字列",
+      "タプル"
+    ],
+    answer: 1,
+    explanation: "app.invokeにはmessagesキーにHumanMessageのリストを含む辞書を渡します．"
+  },
+  {
+    question: "max_resultsを増やすことの効果は何ですか？",
+    options: [
+      "検索速度が向上する",
+      "1回の検索で必要な情報を得られる確率が高まる",
+      "LLMの応答品質が向上する",
+      "トレースの詳細度が上がる"
+    ],
+    answer: 1,
+    explanation: "max_resultsを増やすことで，1回の検索で必要な情報を得られる確率が高まり，再検索の回数を減らすことができます．"
+  }
+]} />

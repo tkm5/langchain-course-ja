@@ -1,0 +1,136 @@
+---
+title: "S4-L7: LCELによるOutput Parserを含むエージェントの構成"
+description: "LangChain Expression Languageを使って，AgentExecutorの出力抽出と構造化パースをチェーンとして構成"
+sectionNumber: 4
+sectionTitle: "The Original LangChain ReAct Agent"
+lectureNumber: 7
+lectureTitle: "Composing an Agent with Output Parsers using LCEL"
+udemyLectureId: 52125323
+difficulty: "intermediate"
+tags: ["lcel", "runnable-lambda", "output-parser", "chain-composition"]
+category: "agents"
+order: 407
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，LangChain Expression Language（LCEL）のRunnableLambdaを使って，AgentExecutorの出力抽出と構造化パースをエレガントにチェーンとして構成する方法を学びます．
+
+## RunnableLambdaとは
+
+RunnableLambdaは，任意のPython関数（通常はlambda関数）をRunnableオブジェクトに変換する軽量ラッパーです．LangChainのRunnableインターフェース（invoke，batch，stream）を持つオブジェクトに変換でき，チェーンの構成に使用できます．
+
+## チェーンの構成
+
+```python
+from langchain_core.runnables import RunnableLambda
+
+# 出力辞書からoutputキーを抽出
+extract_output = RunnableLambda(lambda x: x["output"])
+
+# 抽出したJSON文字列をPydanticオブジェクトにパース
+parse_output = RunnableLambda(lambda x: output_parser.parse(x))
+
+# チェーン全体を構成
+chain = agent_executor | extract_output | parse_output
+
+# 実行
+result = chain.invoke({"input": "Search for three job postings..."})
+# resultはAgentResponse型のPydanticオブジェクト
+```
+
+### 実行フロー
+
+```mermaid
+graph LR
+    A["agent_executor"] -->|"辞書を返す"| B["extract_output"]
+    B -->|"JSON文字列を抽出"| C["parse_output"]
+    C -->|"Pydanticオブジェクト"| D["AgentResponse"]
+    style A fill:#4a5568,color:#fff
+    style D fill:#2d3748,color:#fff
+```
+
+1. `agent_executor`: クエリを受けてReActエージェントを実行し，辞書（input + output）を返す
+2. `extract_output`: 辞書からoutputキーの値（JSON文字列）を抽出
+3. `parse_output`: JSON文字列をPydanticのAgentResponseオブジェクトに変換
+
+## LangSmithでの確認
+
+トレースでは3つのステップが確認できます．
+
+- AgentExecutor: 入力→辞書（input + output）
+- RunnableLambda（extract_output）: 辞書→JSON文字列
+- RunnableLambda（parse_output）: JSON文字列→AgentResponse
+
+## GPT-4oの使用理由
+
+GPT-5はReActエージェントの`stop`パラメータをサポートしていないため，GPT-4oを使用しています．Tool Callingエージェント（Function Calling使用）であればGPT-5も使用可能です．詳細は後続セクションで解説されます．
+
+## まとめ
+
+- RunnableLambdaで任意のPython関数をRunnableに変換できる
+- LCELのパイプ演算子で複数のRunnableをエレガントにチェーン構成
+- extract → parseの2ステップで構造化出力を取得
+- LangSmithで各ステップの入出力を確認可能
+- GPT-5はstopパラメータ非対応のため，ReActエージェントにはGPT-4oを使用
+
+<Quiz questions={[
+  {
+    question: "RunnableLambdaの主な役割は何ですか？",
+    options: [
+      "LLMモデルのパラメータを調整する",
+      "任意のPython関数をRunnableオブジェクトに変換する",
+      "プロンプトテンプレートを動的に生成する",
+      "エージェントのメモリを管理する"
+    ],
+    answer: 1,
+    explanation: "RunnableLambdaは任意のPython関数（通常はlambda関数）をRunnableオブジェクトに変換し，LCELのチェーン構成で使用できるようにする軽量ラッパーです．"
+  },
+  {
+    question: "LCELでチェーンを構成するために使用する演算子はどれですか？",
+    options: [
+      ">> 演算子",
+      "| パイプ演算子",
+      "+ 加算演算子",
+      "& AND演算子"
+    ],
+    answer: 1,
+    explanation: "LCELではパイプ演算子 | を使って複数のRunnableをチェーンとして構成します．例: agent_executor | extract_output | parse_output"
+  },
+  {
+    question: "チェーン構成 agent_executor | extract_output | parse_output の中間ステップextract_outputが行うことは何ですか？",
+    options: [
+      "LLMに再度問い合わせる",
+      "辞書からoutputキーの値を抽出する",
+      "JSONをバリデーションする",
+      "ツールを実行する"
+    ],
+    answer: 1,
+    explanation: "extract_outputはRunnableLambda(lambda x: x['output'])として定義され，AgentExecutorが返す辞書からoutputキーの値（JSON文字列）を抽出します．"
+  },
+  {
+    question: "GPT-5がReActエージェントで使用できない理由は何ですか？",
+    options: [
+      "GPT-5はLangChainと互換性がないから",
+      "GPT-5はFunction Callingをサポートしていないから",
+      "GPT-5はstopパラメータをサポートしていないから",
+      "GPT-5はJSON出力に対応していないから"
+    ],
+    answer: 2,
+    explanation: "GPT-5はReActエージェントのstopパラメータをサポートしていないため使用できません．Tool Callingエージェント（Function Calling使用）であればGPT-5も使用可能です．"
+  },
+  {
+    question: "RunnableLambdaが持つインターフェースに含まれないものはどれですか？",
+    options: [
+      "invoke",
+      "batch",
+      "stream",
+      "train"
+    ],
+    answer: 3,
+    explanation: "RunnableLambdaはLangChainのRunnableインターフェース（invoke，batch，stream）を持ちます．trainはRunnableインターフェースには含まれません．"
+  }
+]} />
+

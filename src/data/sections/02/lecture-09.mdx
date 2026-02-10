@@ -1,0 +1,116 @@
+---
+title: "S2-L9: コースで使用するLangChainバージョン"
+description: "コースのLangChainバージョン互換性とセマンティックバージョニングについて"
+sectionNumber: 2
+sectionTitle: "The GIST of LangChain"
+lectureNumber: 9
+lectureTitle: "LangChain Version In Course V.1"
+udemyLectureId: 43182340
+difficulty: "beginner"
+tags: ["langchain", "version", "compatibility"]
+category: "langchain-basics"
+order: 209
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，コースで使用するLangChainのバージョンと，バージョン互換性について説明します．セマンティックバージョニングの考え方と，バージョン差異への対応方法を解説します．
+
+## LangChainのバージョン管理
+
+コースはLangChain v1.0.2（収録時点の最新版）と互換性があります．`uv add langchain`コマンドでインストールすると，その時点の最新バージョンがインストールされます．
+
+バージョンは`uv.lock`ファイルで確認できます．
+
+## セマンティックバージョニング
+
+```text
+┌─────────────────────────────────────────┐
+│   セマンティックバージョニング            │
+│         major.minor.patch                │
+│                                         │
+│   例: 1 . 0 . 2                         │
+│        │   │   └─ patch: バグ修正       │
+│        │   └───── minor: 機能追加       │
+│        └───────── major: 破壊的変更     │
+└─────────────────────────────────────────┘
+```
+
+LangChainはセマンティックバージョニング（major.minor.patch）に従っています．
+
+- パッチバージョンの変更（例: 1.0.2 → 1.0.7）: バグ修正や新機能追加．破壊的変更なし
+- マイナーバージョンの変更: 後方互換性を保った機能追加
+- メジャーバージョンの変更: 破壊的変更の可能性あり
+
+多くの場合，マイナーバージョンの変更では互換性の問題は発生しません．破壊的変更がある場合は，講師がコースを更新して対応します．
+
+## 問題が発生した場合
+
+バージョンの互換性に問題がある場合は，Discordチャンネルで報告してください．講師が対応します．
+
+## まとめ
+
+- コースはLangChain v1.0.x と互換
+- セマンティックバージョニングにより，パッチ更新では互換性が保たれる
+- 破壊的変更がある場合はコースが更新される
+- 問題があればDiscordで報告可能
+
+<Quiz questions={[
+  {
+    question: "コースが互換性を持つLangChainのバージョンはどれですか？",
+    options: [
+      "v0.5.x",
+      "v0.9.x",
+      "v1.0.x",
+      "v2.0.x"
+    ],
+    answer: 2,
+    explanation: "コースはLangChain v1.0.xと互換性があります．"
+  },
+  {
+    question: "セマンティックバージョニングでパッチバージョンの変更は何を意味しますか？",
+    options: [
+      "破壊的変更がある",
+      "バグ修正や新機能追加で破壊的変更はない",
+      "APIが完全に変わる",
+      "後方互換性がなくなる"
+    ],
+    answer: 1,
+    explanation: "パッチバージョンの変更はバグ修正や新機能追加であり，破壊的変更はありません．"
+  },
+  {
+    question: "LangChainのバージョンを確認できるファイルはどれですか？",
+    options: [
+      "package.json",
+      "uv.lock",
+      "requirements.txt",
+      "setup.py"
+    ],
+    answer: 1,
+    explanation: "LangChainのバージョンはuv.lockファイルで確認できます．"
+  },
+  {
+    question: "バージョンの互換性に問題がある場合はどうすべきですか？",
+    options: [
+      "自分でソースコードを修正する",
+      "古いバージョンを手動でインストールする",
+      "Discordチャンネルで報告する",
+      "コースの受講をやめる"
+    ],
+    answer: 2,
+    explanation: "バージョンの互換性に問題がある場合は，Discordチャンネルで報告すると講師が対応してくれます．"
+  },
+  {
+    question: "セマンティックバージョニングの3つの要素の正しい順序はどれですか？",
+    options: [
+      "patch.minor.major",
+      "minor.major.patch",
+      "major.minor.patch",
+      "major.patch.minor"
+    ],
+    answer: 2,
+    explanation: "セマンティックバージョニングはmajor.minor.patchの順序で構成されます．"
+  }
+]} />

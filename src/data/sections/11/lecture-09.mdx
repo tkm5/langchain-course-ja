@@ -1,0 +1,116 @@
+---
+title: "S11-L9: グラフノードの定義"
+description: "MessagesState，エージェント推論ノード，ToolNodeの実装"
+sectionNumber: 11
+sectionTitle: "Introduction To LangGraph"
+lectureNumber: 9
+lectureTitle: "[Hands On] 43. Building Blocks: Defining Your Agent's Nodes in LangGraph"
+udemyLectureId: 50656113
+difficulty: "intermediate"
+tags: ["nodes", "MessagesState", "ToolNode", "LangGraph"]
+category: "langgraph"
+order: 1109
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，LangGraphのノードを実装します．MessagesStateでメッセージ履歴を管理し，エージェント推論ノードとToolNodeを定義します．
+
+## MessagesState
+
+`MessagesState`はメッセージのリストを保持するシンプルなステートオブジェクトです．エージェントと人間の間のすべてのメッセージ（HumanMessage，AIMessage）を追跡します．
+
+## エージェント推論ノード
+
+```python
+def run_agent_reasoning(state: MessagesState):
+    system_message = "You are a helpful assistant with access to tools"
+    response = llm_with_tools.invoke(
+        [{"role": "system", "content": system_message}]
+        + state["messages"]
+    )
+    return {"messages": [response]}
+```
+
+このノードはLLMを呼び出し，ツール呼び出しが必要かどうかを判断させます．
+
+## ToolNode
+
+```python
+from langgraph.prebuilt import ToolNode
+
+tool_node = ToolNode(tools=tools)
+```
+
+ToolNodeはLangGraphのプリビルトノードで，以下の処理を自動で行います．
+
+- ステートの最後のメッセージを確認
+- 有効なツール呼び出しがある場合，自動実行
+- 並列実行やストリーミングモードもサポート
+
+## まとめ
+
+- MessagesStateでメッセージ履歴を管理
+- エージェント推論ノードはLLMを呼び出して次のアクションを決定
+- ToolNodeがツール実行のボイラープレートコードを大幅に削減
+- Function Callingにより，LLMが推論を担当するため特別なプロンプトは不要
+
+<Quiz questions={[
+  {
+    question: "MessagesStateの主な役割は何ですか？",
+    options: [
+      "LLMのパラメータを保持する",
+      "エージェントと人間の間のメッセージ履歴を管理する",
+      "ツールの実行結果のみを保持する",
+      "グラフの構造を定義する"
+    ],
+    answer: 1,
+    explanation: "MessagesStateはメッセージのリストを保持するシンプルなステートオブジェクトで，HumanMessageやAIMessageなど全てのメッセージを追跡します．"
+  },
+  {
+    question: "エージェント推論ノード（run_agent_reasoning）の主な処理は何ですか？",
+    options: [
+      "ツールを実行する",
+      "LLMを呼び出し，ツール呼び出しが必要かどうかを判断させる",
+      "ステートを初期化する",
+      "グラフを終了させる"
+    ],
+    answer: 1,
+    explanation: "エージェント推論ノードはLLMを呼び出し，ツール呼び出しが必要かどうかを判断させます．"
+  },
+  {
+    question: "ToolNodeの特徴として正しいものはどれですか？",
+    options: [
+      "手動でツール実行コードを書く必要がある",
+      "LangGraphのプリビルトノードで，ツール実行を自動化する",
+      "単一のツールしか実行できない",
+      "ストリーミングモードは非対応"
+    ],
+    answer: 1,
+    explanation: "ToolNodeはLangGraphのプリビルトノードであり，ステートの最後のメッセージから有効なツール呼び出しを検出し自動実行します．並列実行やストリーミングもサポートしています．"
+  },
+  {
+    question: "ToolNodeが確認するのはステートのどの部分ですか？",
+    options: [
+      "最初のメッセージ",
+      "すべてのメッセージ",
+      "最後のメッセージ",
+      "システムメッセージのみ"
+    ],
+    answer: 2,
+    explanation: "ToolNodeはステートの最後のメッセージを確認し，有効なツール呼び出しがある場合に自動実行します．"
+  },
+  {
+    question: "エージェント推論ノードでシステムメッセージを設定する理由は何ですか？",
+    options: [
+      "エラー処理を行うため",
+      "LLMに役割と振る舞いを指示するため",
+      "ステートを初期化するため",
+      "ツールの説明を提供するため"
+    ],
+    answer: 1,
+    explanation: "システムメッセージはLLMに役割と振る舞いを指示するためのもので，例えば「ツールにアクセスできるヘルプフルアシスタント」という役割を設定します．"
+  }
+]} />

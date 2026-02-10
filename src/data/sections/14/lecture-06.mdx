@@ -1,0 +1,124 @@
+---
+title: "S14-L6: LangGraphのGraphState管理"
+description: "グラフ実行中のノード間で情報を受け渡すGraphStateの定義"
+sectionNumber: 14
+sectionTitle: "Agentic RAG"
+lectureNumber: 6
+lectureTitle: "Managing Information Flow in LangGraph: The GraphState"
+udemyLectureId: 51132401
+difficulty: "intermediate"
+tags: ["langgraph", "graph-state", "typed-dict"]
+category: "rag"
+order: 1406
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，LangGraphのノード実行中に各ノード間で受け渡される状態オブジェクト「GraphState」を定義します．このGraphStateがグラフ全体の情報フローを管理する中心的な役割を果たします．
+
+## GraphStateの設計
+
+GraphStateは`TypedDict`を継承したクラスとして定義し，グラフ実行に必要なすべてのフィールドを含めます．
+
+### 必要なフィールド
+
+```text
+┌──────────────────────────────────────┐
+│            GraphState                │
+├──────────────┬───────────────────────┤
+│ question     │ str    ユーザーの質問 │
+│ generation   │ str    LLM生成回答    │
+│ web_search   │ bool   Web検索フラグ  │
+│ documents    │ list   ドキュメント群 │
+└──────────────┴───────────────────────┘
+```
+
+- `question` (str): ユーザーの元の質問．ドキュメントの関連性判定や外部検索に使用
+- `generation` (str): LLMが生成した回答
+- `web_search` (bool): 外部検索が必要かどうかのフラグ
+- `documents` (list[str]): 取得したドキュメントまたは検索結果のリスト
+
+### 実装
+
+```python
+from typing import List
+from typing_extensions import TypedDict
+
+
+class GraphState(TypedDict):
+    """グラフ実行に必要な状態を保持するクラス"""
+    question: str
+    generation: str
+    web_search: bool
+    documents: List[str]
+```
+
+## GraphStateの役割
+
+各ノードはGraphStateを入力として受け取り，処理結果として状態の一部を更新した辞書を返します．これにより，ノード間でシームレスに情報が共有されます．
+
+## まとめ
+
+- `GraphState`は`TypedDict`を継承し，グラフ全体の状態を型安全に管理する
+- `question`，`generation`，`web_search`，`documents`の4つのフィールドで構成される
+- 各ノードはGraphStateの一部を更新することで，次のノードに情報を引き継ぐ
+
+<Quiz questions={[
+  {
+    question: "GraphStateのweb_searchフィールドの型は何ですか?",
+    options: [
+      "str",
+      "int",
+      "bool",
+      "list"
+    ],
+    answer: 2,
+    explanation: "web_searchフィールドはbool型で，外部Web検索が必要かどうかのフラグとして使用されます．"
+  },
+  {
+    question: "GraphStateが継承するベースクラスはどれですか?",
+    options: [
+      "BaseModel",
+      "TypedDict",
+      "dataclass",
+      "dict"
+    ],
+    answer: 1,
+    explanation: "GraphStateはTypedDictを継承し，型安全な辞書としてグラフ全体の状態を管理します．"
+  },
+  {
+    question: "各ノードがGraphStateを更新する方法はどれですか?",
+    options: [
+      "GraphStateオブジェクトを直接変更する",
+      "更新するフィールドを含む辞書を返す",
+      "グローバル変数に書き込む",
+      "データベースに保存する"
+    ],
+    answer: 1,
+    explanation: "各ノードはGraphStateを入力として受け取り，更新するフィールドを含む辞書を返すことで状態を更新します．"
+  },
+  {
+    question: "GraphStateのdocumentsフィールドの用途は何ですか?",
+    options: [
+      "LLMのモデル設定を保存する",
+      "取得したドキュメントや検索結果のリストを保持する",
+      "APIキーを格納する",
+      "エラーログを保存する"
+    ],
+    answer: 1,
+    explanation: "documentsフィールドは，ベクトルストアから取得したドキュメントやWeb検索結果のリストを保持します．"
+  },
+  {
+    question: "GraphStateのフィールド数はいくつですか?",
+    options: [
+      "2つ",
+      "3つ",
+      "4つ",
+      "5つ"
+    ],
+    answer: 2,
+    explanation: "GraphStateはquestion，generation，web_search，documentsの4つのフィールドで構成されています．"
+  }
+]} />

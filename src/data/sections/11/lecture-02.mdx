@@ -1,0 +1,116 @@
+---
+title: "S11-L2: なぜLangGraphか - LangGraph vs LangChain"
+description: "LangGraphが生まれた動機と自律性のスペクトラムにおける位置づけ"
+sectionNumber: 11
+sectionTitle: "Introduction To LangGraph"
+lectureNumber: 2
+lectureTitle: "Why LangGraph? LangGraph VS LangChain"
+udemyLectureId: 50029199
+difficulty: "intermediate"
+tags: ["LangGraph", "LangChain", "autonomy", "agents", "state-machine"]
+category: "langgraph"
+order: 1102
+---
+
+import Quiz from '@/components/content/Quiz.astro'
+
+## 概要
+
+このレクチャーでは，LangGraphが作られた動機を，AIシステムの自律性のスペクトラム（決定論的コード〜完全自律エージェント）の観点から解説します．
+
+```text
+自律性のスペクトラム:
+信頼性 高 ◄────────────────────────────────────► 柔軟性 高
+  決定論的  LLM統合  チェーン  ルーター  LangGraph  自律型
+  コード                                             エージェント
+                                  ▲
+                              LangGraphの
+                              位置づけ
+```
+
+## 自律性のスペクトラム
+
+AIシステムは自律性のレベルで分類できます．
+
+- 決定論的コード: 完全に開発者が制御．信頼性は高いが柔軟性がない
+- LLM統合: 一部のステップでLLMを活用．柔軟性が増す
+- チェーン: 複数のLLM呼び出しを連鎖．RAGフローなどを構築
+- LLMルーター: LLMが分岐先を決定．ただしサイクルは不可
+- LangGraph: サイクルを持つグラフとしてエージェントを構築
+- 自律型エージェント: AutoGPTなど．柔軟だが信頼性に欠ける
+
+## LangGraphの位置づけ
+
+LangGraphは，ルーターと自律型エージェントの間に位置します．LLMに全自由度を与えるのではなく，開発者がフローを定義し，LLMの自由度を適切に制限することで信頼性を確保します．
+
+## LangGraphの利点
+
+- ノードとエッジを持つグラフとして状態機械を表現
+- 並列実行，条件分岐，永続化（Persistence）をサポート
+- Human-in-the-loop，タイムトラベル（リプレイ），デバッグ・トレーシング（LangSmith連携）を組み込み
+- グラフ内では任意のコード（LangChain以外も可）を記述可能
+
+## まとめ
+
+- LangGraphはLLMの自由度を適切に制限することで信頼性を確保する
+- 状態機械をグラフのノードとエッジで表現する
+- 開発者がフローを制御し，LLMが条件分岐を決定する
+- 永続化，Human-in-the-loop，LangSmith連携など豊富な機能を提供
+
+<Quiz questions={[
+  {
+    question: "自律性のスペクトラムにおいて，LangGraphはどこに位置づけられますか？",
+    options: [
+      "決定論的コードと同じ位置",
+      "LLMルーターと自律型エージェントの間",
+      "完全自律エージェントと同じ位置",
+      "チェーンと同じ位置"
+    ],
+    answer: 1,
+    explanation: "LangGraphはLLMルーターと自律型エージェントの間に位置し，柔軟性を保ちつつ信頼性を確保する設計になっています．"
+  },
+  {
+    question: "LangGraphが他のグラフフレームワーク（Airflow等）と異なる点は何ですか？",
+    options: [
+      "グラフを描画できる",
+      "エージェントアプリケーションに特化した設計と組み込み機能を持つ",
+      "Pythonでのみ動作する",
+      "オープンソースではない"
+    ],
+    answer: 1,
+    explanation: "LangGraphはエージェントアプリケーションに特化しており，永続化，Human-in-the-loop，条件分岐，LangSmith連携など豊富な組み込み機能を提供します．"
+  },
+  {
+    question: "LangGraphにおいて，開発者とLLMの役割分担として正しいものはどれですか？",
+    options: [
+      "開発者がすべてを制御し，LLMは使用しない",
+      "LLMがすべてを決定し，開発者は関与しない",
+      "開発者がフローを制御し，LLMが条件分岐を決定する",
+      "開発者とLLMの役割は同じ"
+    ],
+    answer: 2,
+    explanation: "LangGraphでは開発者がフローを制御し，LLMが条件分岐（どの方向に進むか）を決定するという役割分担になっています．"
+  },
+  {
+    question: "自律型エージェント（AutoGPTなど）が本番環境で使いにくい主な理由は何ですか？",
+    options: [
+      "処理速度が遅いから",
+      "柔軟すぎて信頼性に欠けるから",
+      "コストが高すぎるから",
+      "Python以外の言語で書かれているから"
+    ],
+    answer: 1,
+    explanation: "自律型エージェントはLLMに全自由度を与えるため柔軟ですが，LLMの確率的性質により信頼性に欠け，本番環境では使いにくいです．"
+  },
+  {
+    question: "LangGraphでサポートされている機能として挙げられていないものはどれですか？",
+    options: [
+      "並列実行",
+      "Human-in-the-loop",
+      "自動コード生成",
+      "永続化（Persistence）"
+    ],
+    answer: 2,
+    explanation: "LangGraphがサポートする機能は並列実行，条件分岐，永続化，Human-in-the-loop，タイムトラベル，デバッグ・トレーシングなどです．自動コード生成は含まれていません．"
+  }
+]} />
