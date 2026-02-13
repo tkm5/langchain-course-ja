@@ -28,21 +28,13 @@ react_prompt = hub.pull("hwchase17/react")
 
 ### ReActプロンプトの構造
 
-```text
-┌─────────────────────────────────────┐
-│ ReActプロンプトテンプレート           │
-├─────────────────────────────────────┤
-│ 入力変数:                            │
-│   {tools}        ... ツール説明      │
-│   {tool_names}   ... ツール名リスト   │
-│   {input}        ... ユーザーの質問   │
-│   {agent_scratchpad} ... 作業メモ    │
-├─────────────────────────────────────┤
-│ フォーマット指示:                     │
-│   Thought → Action → Action Input   │
-│   → Observation → ... → Final Answer│
-└─────────────────────────────────────┘
-```
+| セクション | 内容 |
+|---|---|
+| 入力変数 | `{tools}` ... ツール説明 |
+| | `{tool_names}` ... ツール名リスト |
+| | `{input}` ... ユーザーの質問 |
+| | `{agent_scratchpad}` ... 作業メモ |
+| フォーマット指示 | Thought → Action → Action Input → Observation → ... → Final Answer |
 
 ReActプロンプトには以下の入力変数があります．
 

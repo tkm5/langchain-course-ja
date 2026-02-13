@@ -31,24 +31,13 @@ poetry init
 
 ### 依存パッケージのインストール
 
-```text
-┌─────────────────────────────────────────────┐
-│          依存パッケージの構成                │
-├─────────────────┬───────────────────────────┤
-│ LangChainコア   │ langchain, langgraph,     │
-│                 │ langchain-hub,            │
-│                 │ langchain-community       │
-├─────────────────┼───────────────────────────┤
-│ ベクトルストア  │ chromadb                  │
-├─────────────────┼───────────────────────────┤
-│ 検索エンジン    │ tavily-python             │
-├─────────────────┼───────────────────────────┤
-│ ユーティリティ  │ beautifulsoup4,           │
-│                 │ python-dotenv             │
-├─────────────────┼───────────────────────────┤
-│ 開発ツール      │ black, isort, pytest      │
-└─────────────────┴───────────────────────────┘
-```
+| カテゴリ | パッケージ |
+|---|---|
+| LangChainコア | langchain，langgraph，langchain-hub，langchain-community |
+| ベクトルストア | chromadb |
+| 検索エンジン | tavily-python |
+| ユーティリティ | beautifulsoup4，python-dotenv |
+| 開発ツール | black，isort，pytest |
 
 Poetryを使用して以下のパッケージをインストールします．
 

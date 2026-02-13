@@ -18,15 +18,23 @@ import Quiz from '@/components/content/Quiz.astro'
 
 このレクチャーでは，LangGraphが作られた動機を，AIシステムの自律性のスペクトラム（決定論的コード〜完全自律エージェント）の観点から解説します．
 
-```text
-自律性のスペクトラム:
-信頼性 高 ◄────────────────────────────────────► 柔軟性 高
-  決定論的  LLM統合  チェーン  ルーター  LangGraph  自律型
-  コード                                             エージェント
-                                  ▲
-                              LangGraphの
-                              位置づけ
-```
+<div class="not-prose my-6 rounded-lg border p-4" style="border-color: var(--color-border);">
+  <div class="flex justify-between text-xs mb-2" style="color: var(--color-muted);">
+    <span>信頼性 高</span>
+    <span>柔軟性 高</span>
+  </div>
+  <div class="relative h-3 rounded-full mb-4" style="background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899);">
+    <div class="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2" style="left: 68%; background-color: var(--color-foreground); border-color: #8b5cf6;"></div>
+  </div>
+  <div class="flex justify-between text-xs" style="color: var(--color-muted);">
+    <span>決定論的<br />コード</span>
+    <span>LLM統合</span>
+    <span>チェーン</span>
+    <span>ルーター</span>
+    <span class="font-semibold" style="color: var(--color-accent);">LangGraph</span>
+    <span>自律型<br />エージェント</span>
+  </div>
+</div>
 
 ## 自律性のスペクトラム
 

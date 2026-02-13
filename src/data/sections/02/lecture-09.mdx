@@ -26,17 +26,20 @@ import Quiz from '@/components/content/Quiz.astro'
 
 ## セマンティックバージョニング
 
-```text
-┌─────────────────────────────────────────┐
-│   セマンティックバージョニング            │
-│         major.minor.patch                │
-│                                         │
-│   例: 1 . 0 . 2                         │
-│        │   │   └─ patch: バグ修正       │
-│        │   └───── minor: 機能追加       │
-│        └───────── major: 破壊的変更     │
-└─────────────────────────────────────────┘
-```
+<div class="not-prose my-6 rounded-lg border overflow-hidden" style="border-color: var(--color-border);">
+  <div class="px-4 py-2.5 font-semibold text-sm" style="background-color: var(--color-card); border-bottom: 1px solid var(--color-border);">セマンティックバージョニング</div>
+  <div class="p-4 text-sm" style="color: var(--color-foreground);">
+    <p class="text-center text-lg font-mono mb-4"><code>major.minor.patch</code></p>
+    <p class="text-center font-mono mb-4">例: <code>1 . 0 . 2</code></p>
+    <table class="w-full text-sm">
+      <tbody>
+        <tr><td class="py-1 pr-4 font-mono font-semibold" style="color: var(--color-danger);">major</td><td>破壊的変更</td></tr>
+        <tr><td class="py-1 pr-4 font-mono font-semibold" style="color: var(--color-warning);">minor</td><td>機能追加</td></tr>
+        <tr><td class="py-1 pr-4 font-mono font-semibold" style="color: var(--color-success);">patch</td><td>バグ修正</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 LangChainはセマンティックバージョニング（major.minor.patch）に従っています．
 

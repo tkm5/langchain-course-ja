@@ -59,14 +59,18 @@ chunks = text_splitter.split_documents(documents)
 
 ## OpenAIEmbeddings
 
-```text
-統一インターフェース（LangChain Embeddings）
-┌─────────────────────────────────────────────┐
-│  embed_query("テキスト") → [0.1, 0.3, ...]  │
-├─────────────────────────────────────────────┤
-│  OpenAI  │  Cohere  │  HuggingFace  │ ...  │
-└─────────────────────────────────────────────┘
-```
+<div class="not-prose my-6 rounded-lg border overflow-hidden" style="border-color: var(--color-border);">
+  <div class="px-4 py-2.5 font-semibold text-sm" style="background-color: var(--color-card); border-bottom: 1px solid var(--color-border);">統一インターフェース（LangChain Embeddings）</div>
+  <div class="p-4 text-sm" style="color: var(--color-foreground);">
+    <p class="font-mono text-center mb-3"><code>embed_query("テキスト") → [0.1, 0.3, ...]</code></p>
+    <div class="flex flex-wrap gap-2 justify-center">
+      <span class="px-3 py-1 rounded text-xs font-medium" style="background-color: var(--color-card); border: 1px solid var(--color-border);">OpenAI</span>
+      <span class="px-3 py-1 rounded text-xs font-medium" style="background-color: var(--color-card); border: 1px solid var(--color-border);">Cohere</span>
+      <span class="px-3 py-1 rounded text-xs font-medium" style="background-color: var(--color-card); border: 1px solid var(--color-border);">HuggingFace</span>
+      <span class="px-3 py-1 rounded text-xs font-medium" style="background-color: var(--color-card); border: 1px solid var(--color-border);">...</span>
+    </div>
+  </div>
+</div>
 
 OpenAIのEmbeddings APIを使ってテキストをベクトルに変換します．
 

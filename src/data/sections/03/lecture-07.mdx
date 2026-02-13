@@ -47,21 +47,26 @@ tools = [TavilySearch()]
 
 ### 統合ツールの利点
 
-```text
-┌──────────────────────────────────────────────┐
-│     カスタムツール vs 統合ツール               │
-├──────────────────────────────────────────────┤
-│  カスタムツール:                               │
-│    - 基本的なquery引数のみ                    │
-│    - 開発者がSDKのAPIを把握する必要あり       │
-│                                              │
-│  統合ツール（TavilySearch）:                   │
-│    - include_domains, search_depth等の        │
-│      追加引数をLLMが自動活用                  │
-│    - ベンダー提供の優れた説明文               │
-│    - より正確なツール呼び出し                 │
-└──────────────────────────────────────────────┘
-```
+<div class="not-prose my-6 rounded-lg border overflow-hidden" style="border-color: var(--color-border);">
+  <div class="px-4 py-2.5 font-semibold text-sm" style="background-color: var(--color-card); border-bottom: 1px solid var(--color-border);">カスタムツール vs 統合ツール</div>
+  <div class="p-4 text-sm grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <p class="font-semibold mb-2">カスタムツール:</p>
+      <ul class="list-disc pl-4 space-y-1" style="color: var(--color-muted);">
+        <li>基本的なquery引数のみ</li>
+        <li>開発者がSDKのAPIを把握する必要あり</li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold mb-2">統合ツール（TavilySearch）:</p>
+      <ul class="list-disc pl-4 space-y-1" style="color: var(--color-muted);">
+        <li>include_domains，search_depth等の追加引数をLLMが自動活用</li>
+        <li>ベンダー提供の優れた説明文</li>
+        <li>より正確なツール呼び出し</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 - ベンダーが自社製品を最もよく理解しているため，より優れた説明文と引数定義を提供
 - `include_domains`や`search_depth`などの追加引数をLLMが自動的に活用

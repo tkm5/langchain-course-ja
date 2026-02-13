@@ -68,24 +68,11 @@ Question: {input}
 Thought: {agent_scratchpad}
 ```
 
-```text
-┌───────────────────────────────────────┐
-│         ReActプロンプトの構造           │
-├───────────────────────────────────────┤
-│ 1. ツール情報の注入                     │
-│    "You have access to: {tools}"       │
-├───────────────────────────────────────┤
-│ 2. 出力フォーマットの指示               │
-│    Question → Thought → Action         │
-│    → Action Input → Observation        │
-│    （N回繰り返し可能）                   │
-│    → Final Answer                      │
-├───────────────────────────────────────┤
-│ 3. 入力変数                            │
-│    {input}           ユーザーの質問     │
-│    {agent_scratchpad} 作業履歴         │
-└───────────────────────────────────────┘
-```
+| セクション | 内容 |
+|---|---|
+| 1. ツール情報の注入 | "You have access to: `{tools}`" |
+| 2. 出力フォーマットの指示 | Question → Thought → Action → Action Input → Observation（N回繰り返し可能）→ Final Answer |
+| 3. 入力変数 | `{input}`: ユーザーの質問，`{agent_scratchpad}`: 作業履歴 |
 
 このプロンプトの特徴:
 

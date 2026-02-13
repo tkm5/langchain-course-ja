@@ -51,14 +51,16 @@ CoTプロンプティングでは，類似の問題について思考過程を�
 2. モデルがその思考パターンを新しい問題に適用する
 3. 中間ステップを踏んで正確な答えを導出する
 
-```text
-標準プロンプティング          Chain of Thoughtプロンプティング
-┌──────────────────┐      ┌──────────────────────────────┐
-│ 問題 → LLM → 50  │      │ 問題 → 類似例 + 思考過程     │
-│      （不正解）    │      │ → LLM → 中間ステップ → 35   │
-│                    │      │            （正解）           │
-└──────────────────┘      └──────────────────────────────┘
-```
+<div class="not-prose my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="rounded-lg border p-4" style="border-color: var(--color-border); background-color: var(--color-card);">
+    <p class="font-semibold text-sm mb-2">標準プロンプティング</p>
+    <p class="text-sm" style="color: var(--color-muted);">問題 → LLM → 50（不正解）</p>
+  </div>
+  <div class="rounded-lg border p-4" style="border-color: var(--color-border); background-color: var(--color-card);">
+    <p class="font-semibold text-sm mb-2">Chain of Thoughtプロンプティング</p>
+    <p class="text-sm" style="color: var(--color-muted);">問題 → 類似例 + 思考過程 → LLM → 中間ステップ → 35（正解）</p>
+  </div>
+</div>
 
 ## CoTの2つの種類
 

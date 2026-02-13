@@ -78,21 +78,16 @@ result = retrieval_chain.invoke(
 
 ### RunnablePassthrough.assignの仕組み
 
-```text
-入力: {"question": "What is Pinecone?"}
-         │
-         ▼
-┌─ RunnablePassthrough.assign ────────────────────┐
-│  元の入力をそのまま通過（question保持）           │
-│  + context キーを追加:                           │
-│    itemgetter("question")                        │
-│      → retriever（類似検索）                     │
-│        → format_docs（文字列化）                 │
-└─────────────────────────────────────────────────┘
-         │
-         ▼
-出力: {"question": "What is Pinecone?",
-       "context": "関連ドキュメントの文字列..."}
+```mermaid
+graph TD
+    A["入力: {&quot;question&quot;: &quot;What is Pinecone?&quot;}"] --> B["RunnablePassthrough.assign"]
+    B --> C["元の入力をそのまま通過<br>（question保持）"]
+    B --> D["+ context キーを追加"]
+    D --> E["itemgetter(&quot;question&quot;)"]
+    E --> F["retriever（類似検索）"]
+    F --> G["format_docs（文字列化）"]
+    C --> H["出力: {&quot;question&quot;: &quot;...&quot;,<br>&quot;context&quot;: &quot;関連ドキュメントの文字列...&quot;}"]
+    G --> H
 ```
 
 1. 入力辞書`{"question": "..."}`がそのまま通過する

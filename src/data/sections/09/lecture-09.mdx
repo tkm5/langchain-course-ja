@@ -56,14 +56,35 @@ Anthropicが「Goldilocksゾーン」と呼ぶ，適切なバランスを見つ�
 - 未定義の境界（「必要に応じてエスカレート」- いつが「必要」なのか不明）
 - 異なる実行ごとに大きく異なるアプローチが発生
 
-```text
-詳細すぎる              Goldilocksゾーン          曖昧すぎる
-◄──────────────────────────────────────────────────────────►
-  硬直的なルール        推論フレームワーク         実行可能な
-  メンテナンス困難      原則ベース                 ガイダンスなし
-  エッジケース列挙      適切な情報量               未定義の境界
-                        ★ 目指すべき場所 ★
-```
+<div class="not-prose my-6 rounded-lg border p-4" style="border-color: var(--color-border);">
+  <div class="flex justify-between text-xs mb-2" style="color: var(--color-muted);">
+    <span>詳細すぎる</span>
+    <span>曖昧すぎる</span>
+  </div>
+  <div class="relative h-3 rounded-full mb-4" style="background: linear-gradient(to right, var(--color-danger), var(--color-success), var(--color-warning));">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2" style="background-color: var(--color-foreground); border-color: var(--color-success);"></div>
+  </div>
+  <div class="grid grid-cols-3 gap-2 text-xs text-center" style="color: var(--color-muted);">
+    <div>
+      <p class="font-semibold mb-1" style="color: var(--color-danger);">詳細すぎる</p>
+      <p>硬直的なルール</p>
+      <p>メンテナンス困難</p>
+      <p>エッジケース列挙</p>
+    </div>
+    <div>
+      <p class="font-semibold mb-1" style="color: var(--color-success);">Goldilocksゾーン</p>
+      <p>推論フレームワーク</p>
+      <p>原則ベース</p>
+      <p>適切な情報量</p>
+    </div>
+    <div>
+      <p class="font-semibold mb-1" style="color: var(--color-warning);">曖昧すぎる</p>
+      <p>実行可能な</p>
+      <p>ガイダンスなし</p>
+      <p>未定義の境界</p>
+    </div>
+  </div>
+</div>
 
 ## 効果的なシステムプロンプトの特徴
 

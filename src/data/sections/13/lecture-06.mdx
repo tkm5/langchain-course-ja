@@ -28,26 +28,15 @@ search = TavilySearchResults(max_results=5)
 
 ## ツールの二重化テクニック
 
-```text
-┌─────────────────────────────────────────┐
-│              ToolNode                    │
-│                                         │
-│  ┌──────────────┐  ┌──────────────┐    │
-│  │    tool1      │  │    tool2      │    │
-│  │ AnswerQuestion│  │ ReviseAnswer  │    │
-│  └──────┬───────┘  └──────┬───────┘    │
-│         │                  │            │
-│         └──────┬───────────┘            │
-│                │                        │
-│         ┌──────▼───────┐               │
-│         │  run_queries  │               │
-│         │ (同一の検索機能)│               │
-│         └──────┬───────┘               │
-│                │                        │
-│         ┌──────▼───────┐               │
-│         │ Tavily Search │               │
-│         └──────────────┘               │
-└─────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph TN["ToolNode"]
+        T1["tool1<br>AnswerQuestion"]
+        T2["tool2<br>ReviseAnswer"]
+        T1 --> RQ["run_queries<br>（同一の検索機能）"]
+        T2 --> RQ
+        RQ --> TS["Tavily Search"]
+    end
 ```
 
 同じ検索機能に対して2つの異なる名前のツールを作成します．

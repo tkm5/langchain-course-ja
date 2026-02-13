@@ -36,21 +36,30 @@ Cursor，Claude Code，Codex，Replit，Devinなどのコーディングエー�
 - すべてのコーディングエージェントが脆弱なコードを生成
 - 認証の不備，SSRF，セキュリティ制御の欠如など
 
-```text
-┌──────────────────────────────────────────────────┐
-│     コーディングエージェントのセキュリティ品質      │
-├──────────────────────────────────────────────────┤
-│  得意（Good）            │  苦手（Bad/Ugly）       │
-│                          │                        │
-│  - SQLインジェクション防止  │  - 認可の不備          │
-│  - XSS防止（フレームワーク）│  - ビジネスロジック検証  │
-│                          │  - SSRF                │
-│  明確な解決策がある場合    │  - CSRF保護の欠如       │
-│  → 正しいコードを生成     │  - レート制限の欠如     │
-│                          │  判断が必要な場合        │
-│                          │  → 脆弱なコードを生成   │
-└──────────────────────────────────────────────────┘
-```
+<div class="not-prose my-6 rounded-lg border overflow-hidden" style="border-color: var(--color-border);">
+  <div class="px-4 py-2.5 font-semibold text-sm" style="background-color: var(--color-card); border-bottom: 1px solid var(--color-border);">コーディングエージェントのセキュリティ品質</div>
+  <div class="p-4 text-sm grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <p class="font-semibold mb-2" style="color: var(--color-success);">得意（Good）</p>
+      <ul class="list-disc pl-4 space-y-1" style="color: var(--color-muted);">
+        <li>SQLインジェクション防止</li>
+        <li>XSS防止（フレームワーク）</li>
+      </ul>
+      <p class="mt-2 text-xs" style="color: var(--color-muted);">明確な解決策がある場合 → 正しいコードを生成</p>
+    </div>
+    <div>
+      <p class="font-semibold mb-2" style="color: var(--color-danger);">苦手（Bad/Ugly）</p>
+      <ul class="list-disc pl-4 space-y-1" style="color: var(--color-muted);">
+        <li>認可の不備</li>
+        <li>ビジネスロジック検証</li>
+        <li>SSRF</li>
+        <li>CSRF保護の欠如</li>
+        <li>レート制限の欠如</li>
+      </ul>
+      <p class="mt-2 text-xs" style="color: var(--color-muted);">判断が必要な場合 → 脆弱なコードを生成</p>
+    </div>
+  </div>
+</div>
 
 ## エージェントが得意な領域（Good）
 
