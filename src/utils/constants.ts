@@ -1,9 +1,9 @@
 export const SITE_TITLE = 'LangChain & LangGraph 完全ガイド'
 export const SITE_DESCRIPTION =
-  'Udemyコース「LangChain - Develop AI Agents with LangChain & LangGraph」の日本語解説サイト．全22セクション，172レクチャーを網羅的に解説します．'
+  'Udemyコース「LangChain - Develop AI Agents with LangChain & LangGraph」の日本語解説サイト．全22セクション，171レクチャーを網羅的に解説します．'
 export const COURSE_ID = 5281528
 export const TOTAL_SECTIONS = 22
-export const TOTAL_LECTURES = 166
+export const TOTAL_LECTURES = 171
 export const TOTAL_QUIZZES = 6
 
 export const SECTION_TITLES: Record<number, string> = {
